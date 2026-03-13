@@ -103,7 +103,7 @@ def add_signature(doc):
     add_para(doc, "Ray Castro", bold=True, size=10.5, color=NAVY, space_before=0, space_after=1)
     add_para(doc, "Founder, Wander", size=10, color=GREY, space_before=0, space_after=1)
     add_para(doc, "ray.s.castro@outlook.com", size=10, color=TEAL, space_before=0, space_after=1)
-    add_para(doc, "[wanderapp.com]  ·  Seattle, WA", italic=True, size=9.5, color=GREY,
+    add_para(doc, "pierway.io  ·  Seattle, WA", italic=True, size=9.5, color=GREY,
              space_before=0, space_after=0)
 
 def add_note(doc, text):
