@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wander — Walk Seattle. Discover More.</title>
+  <meta name="description" content="Wander generates AI-powered walking routes for cruise passengers exploring Seattle — connecting pedestrian movement to local commerce through verified, performance-based visits." />
+  <meta property="og:title" content="Wander — Walk Seattle. Discover More." />
+  <meta property="og:description" content="AI-powered walking routes for Seattle cruise passengers. Performance-based local commerce." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1F3864;
+      --teal:      #1A7A6E;
+      --teal-lt:   #2AA090;
+      --orange:    #E07B39;
+      --offwhite:  #F7F9FB;
+      --mid-grey:  #6B7A8D;
+      --light-grey:#E8EDF3;
+      --white:     #FFFFFF;
+      --text:      #1A2533;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--mid-grey); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal) !important; color: var(--white) !important;
+      padding: 0.5rem 1.25rem; border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-lt) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(150deg, var(--navy) 0%, #0F2347 55%, #162D50 100%);
+      padding: 80px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 780px; text-align: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(26,122,110,0.25);
+      border: 1px solid rgba(26,122,110,0.5);
+      color: #5DE0C8;
+      padding: 0.35rem 1rem; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: #5DE0C8; border-radius: 50%; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: normal; color: #5DE0C8; }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 580px; margin: 0 auto 2.5rem;
+      font-weight: 400; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--white);
+      padding: 0.875rem 2rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-lt); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.875rem 2rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 500;
+      text-decoration: none; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+      margin-top: 4rem; padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--white);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--navy);
+      line-height: 1.2; letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--mid-grey);
+      max-width: 560px; line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--offwhite); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+    .step {
+      background: var(--white); border-radius: 12px;
+      padding: 2rem; border: 1px solid var(--light-grey);
+      position: relative;
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--navy); color: var(--white);
+      font-weight: 700; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+    .step p { font-size: 0.925rem; color: var(--mid-grey); line-height: 1.65; }
+
+    /* ── THESIS ── */
+    .thesis { background: var(--white); }
+    .thesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .thesis-pillars { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pillar {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.25rem; border-radius: 10px;
+      border-left: 3px solid var(--teal);
+      background: var(--offwhite);
+    }
+    .pillar-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .pillar-title { font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; font-size: 0.95rem; }
+    .pillar-desc { font-size: 0.875rem; color: var(--mid-grey); line-height: 1.6; }
+
+    .thesis-quote {
+      background: var(--navy); border-radius: 16px;
+      padding: 2.5rem; color: var(--white);
+    }
+    .thesis-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; line-height: 1.5;
+      margin-bottom: 1.5rem; color: rgba(255,255,255,0.92);
+    }
+    .thesis-quote cite {
+      font-size: 0.85rem; color: rgba(255,255,255,0.5);
+      font-style: normal;
+    }
+    .thesis-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      background: rgba(26,122,110,0.3); color: #5DE0C8;
+      padding: 0.3rem 0.75rem; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── FOR PARTNERS ── */
+    .partners { background: var(--offwhite); }
+    .partner-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .partner-card {
+      background: var(--white); border-radius: 12px;
+      padding: 2rem; border: 1px solid var(--light-grey);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .partner-card:hover { box-shadow: 0 8px 32px rgba(31,56,100,0.1); transform: translateY(-2px); }
+    .partner-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .icon-port    { background: rgba(31,56,100,0.08); }
+    .icon-cruise  { background: rgba(26,122,110,0.08); }
+    .icon-hotel   { background: rgba(224,123,57,0.08); }
+    .icon-tourism { background: rgba(93,57,224,0.08); }
+    .partner-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+    .partner-card p { font-size: 0.9rem; color: var(--mid-grey); line-height: 1.65; margin-bottom: 1rem; }
+    .partner-card ul { list-style: none; padding: 0; }
+    .partner-card ul li {
+      font-size: 0.875rem; color: var(--text);
+      padding: 0.3rem 0; padding-left: 1.25rem;
+      position: relative;
+    }
+    .partner-card ul li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--teal); font-weight: 600;
+    }
+
+    /* ── MODEL ── */
+    .model { background: var(--navy); }
+    .model h2 { color: var(--white); }
+    .model .section-label { color: #5DE0C8; }
+    .model .section-sub { color: rgba(255,255,255,0.6); }
+    .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .model-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.75rem;
+    }
+    .model-card h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .model-card p { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .model-card .model-highlight { font-size: 1.5rem; font-weight: 700; color: #5DE0C8; margin-bottom: 0.5rem; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label { font-size: 0.85rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 0.35rem; }
+    input, select, textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1px solid var(--light-grey); border-radius: 8px;
+      font-size: 0.925rem; font-family: 'Inter', sans-serif;
+      color: var(--text); background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(26,122,110,0.1);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: var(--teal); color: var(--white);
+      border: none; padding: 0.9rem 2rem;
+      border-radius: 8px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; width: 100%;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--teal-lt); }
+
+    .contact-info h3 { font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info p { color: var(--mid-grey); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .contact-item-icon { font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .contact-item-text { font-size: 0.9rem; color: var(--text); }
+    .contact-item-text strong { display: block; font-weight: 600; color: var(--navy); margin-bottom: 0.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.5);
+      padding: 2rem 5%; text-align: center;
+      font-size: 0.85rem;
+    }
+    footer strong { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .thesis-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Wander</a>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#partners">For Partners</a>
+    <a href="#model">The Model</a>
+    <a href="#contact" class="nav-cta">Partner With Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span></span>Launching Seattle — 2026 Cruise Season</div>
+    <h1>Walk Seattle.<br/><em>Discover more.</em></h1>
+    <p class="hero-sub">
+      Wander generates AI-powered walking routes for cruise passengers exploring Seattle —
+      turning pedestrian movement into verified, performance-based local commerce.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Partner With Us</a>
+      <a href="#how" class="btn-outline">See How It Works</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2M+</div>
+        <div class="stat-label">Cruise Passengers<br/>Seattle 2026</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Cost to Partners<br/>Until Visit Verified</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">298</div>
+        <div class="stat-label">Ship Calls<br/>Per Season</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Routes Generated<br/>Per User</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <p class="section-label">How It Works</p>
+    <h2>From ship to street<br/>in 30 seconds.</h2>
+    <p class="section-sub">
+      Wander removes the friction between disembarkation and discovery.
+      No planning required. No app store required. Just scan and go.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Scan the QR Code</h3>
+        <p>Passengers scan a Wander QR code at the terminal, hotel lobby, or concierge desk. No app download required — opens instantly in any browser.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Set Your Parameters</h3>
+        <p>Tell Wander how much time you have and what you're interested in — history, food, waterfront, architecture. Wander builds a personalized loop in seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Walk with a Story</h3>
+        <p>AI narration brings the city to life as you walk. Contextual merchant suggestions appear naturally in the story — optional, never interruptive.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Verified Commerce</h3>
+        <p>When a walker enters a merchant's location, Wander verifies the visit and charges the merchant a small CPV fee. No impressions. No clicks. Just real foot traffic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="thesis" id="thesis">
+  <div class="section-inner">
+    <div class="thesis-grid">
+      <div>
+        <p class="section-label">The Opportunity</p>
+        <h2>Nobody owns the gap between the ship and the city.</h2>
+        <p class="section-sub">Navigation platforms own directions. Review platforms own opinions. Tour apps own static content. No one owns the closed-loop connection between pedestrian intent and verified local commerce.</p>
+        <div class="thesis-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🧭</div>
+            <div>
+              <div class="pillar-title">Content is the wedge</div>
+              <div class="pillar-desc">Narrative-native walking routes get passengers engaged with the city — and with Wander.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📍</div>
+            <div>
+              <div class="pillar-title">Attribution is the engine</div>
+              <div class="pillar-desc">Verified visit tracking turns foot traffic into a measurable, billable commercial outcome for merchants.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📊</div>
+            <div>
+              <div class="pillar-title">Data is the moat</div>
+              <div class="pillar-desc">Every walk builds a proprietary dataset of pedestrian density, behavioral intent, and merchant conversion performance.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div>
+              <div class="pillar-title">AI is the leverage</div>
+              <div class="pillar-desc">Agentic systems compress operations — infinite routes, automated merchant billing, real-time optimization.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="thesis-quote">
+        <blockquote>"Walking becomes the transaction."</blockquote>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:1.7;">
+          Wander transforms pedestrian movement into measurable, attributable economic infrastructure
+          for the cities and communities that make exploration worthwhile.
+        </p>
+        <div class="thesis-tags">
+          <span class="tag">Performance-Based</span>
+          <span class="tag">AI-Native</span>
+          <span class="tag">Privacy-First</span>
+          <span class="tag">No Impressions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR PARTNERS -->
+<section class="partners" id="partners">
+  <div class="section-inner">
+    <p class="section-label">For Partners</p>
+    <h2>A better experience<br/>for your passengers and guests.</h2>
+    <p class="section-sub">
+      Wander adds value to your existing offering without adding cost.
+      QR code placement at your property or terminal connects your passengers
+      to the city the moment they're ready to explore.
+    </p>
+    <div class="partner-cards">
+      <div class="partner-card">
+        <div class="partner-icon icon-port">⚓</div>
+        <h3>Cruise Terminals</h3>
+        <p>Give disembarking passengers an immediate, useful resource for their port day — before they've opened Google Maps.</p>
+        <ul>
+          <li>QR code placement at disembarkation</li>
+          <li>Zero cost to the port</li>
+          <li>Aggregate visitor movement analytics</li>
+          <li>Revenue share available</li>
+        </ul>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon icon-cruise">🚢</div>
+        <h3>Cruise Lines</h3>
+        <p>Complement your shore excursion offering with a self-guided AI option — no obligation, no cost, high satisfaction.</p>
+        <ul>
+          <li>Co-branded experience option</li>
+          <li>Pre-departure app distribution</li>
+          <li>Passenger satisfaction signal</li>
+          <li>No cannibalization of paid excursions</li>
+        </ul>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon icon-hotel">🏨</div>
+        <h3>Hotels</h3>
+        <p>Add Wander to your concierge offering — a free resource cruise guests actually use on their port day.</p>
+        <ul>
+          <li>QR in rooms, lobby, or concierge desk</li>
+          <li>Branded landing page option</li>
+          <li>Zero integration required</li>
+          <li>Adds value to cruise packages</li>
+        </ul>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon icon-tourism">🗺️</div>
+        <h3>Tourism Organizations</h3>
+        <p>Align Wander with destination development goals — turning cruise visitors into deeper local explorers.</p>
+        <ul>
+          <li>Co-distribution through your network</li>
+          <li>Local merchant activation</li>
+          <li>Aggregate visitor behavior data</li>
+          <li>Revenue to local businesses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MODEL -->
+<section class="model" id="model">
+  <div class="section-inner">
+    <p class="section-label">The Model</p>
+    <h2>Pay for visits.<br/>Not impressions.</h2>
+    <p class="section-sub">
+      Wander's revenue model is built on verified outcomes.
+      Merchants pay only when a passenger actually walks through their door.
+    </p>
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="model-highlight">$3–8</div>
+        <h3>Cost Per Verified Visit</h3>
+        <p>Merchants pay a small CPV fee only when a Wander user enters their location — confirmed by high-fidelity telemetry.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-highlight">$0</div>
+        <h3>Cost to Distribution Partners</h3>
+        <p>Cruise lines, hotels, and terminals pay nothing. Wander generates value for your passengers and guests at no cost to you.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-highlight">Rev Share</div>
+        <h3>Available for Partners</h3>
+        <p>Distribution partners who actively promote Wander to their passengers or guests can participate in a revenue share on verified visits.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-highlight">100%</div>
+        <h3>Performance-Based</h3>
+        <p>No impressions. No clicks. No subscriptions for users. Every dollar Wander earns comes from a real person walking into a real business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Partner With Wander</p>
+        <h2>Let's talk before<br/>the season opens.</h2>
+        <p class="section-sub">
+          We're building distribution partnerships for Seattle's 2026 cruise season.
+          If you're a cruise terminal, cruise line, hotel, or tourism organization —
+          we'd love 20 minutes.
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-item-icon">📍</span>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              Seattle, WA — Port of Seattle Cruise Corridor
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">✉️</span>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              ray.s.castro@outlook.com
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-icon">🗓️</span>
+            <div class="contact-item-text">
+              <strong>Season Timeline</strong>
+              Targeting partnership agreements by April 1, 2026 ahead of the mid-April season opening.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="org">Organization</label>
+              <input type="text" id="org" placeholder="Company / hotel / port" required />
+            </div>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required />
+          </div>
+          <div>
+            <label for="type">Partner Type</label>
+            <select id="type">
+              <option value="">Select one...</option>
+              <option>Cruise Terminal / Port</option>
+              <option>Cruise Line</option>
+              <option>Hotel</option>
+              <option>Tourism Organization</option>
+              <option>Tour Operator / Attraction</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your property and what you're looking for..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Inquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Wander</strong> &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; 2026</p>
+  <p style="margin-top:0.5rem;">Content is the wedge. Attribution is the engine. Data is the moat.</p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Message sent — we\'ll be in touch within 24 hours.';
+    btn.style.background = '#1A7A6E';
+    btn.disabled = true;
+  }
+
+  // Smooth active state for nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--teal)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
