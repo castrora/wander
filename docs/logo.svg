@@ -1,0 +1,24 @@
+<svg viewBox="0 0 224 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Pierway">
+
+  <!-- Pier rails converging to horizon (perspective view looking down the pier) -->
+  <line x1="4" y1="12" x2="44" y2="28" stroke="#1F3864" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="4" y1="28" x2="44" y2="28" stroke="#1F3864" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="4" y1="44" x2="44" y2="28" stroke="#1F3864" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Cross planks — narrowing with perspective -->
+  <line x1="14" y1="16" x2="14" y2="40" stroke="#1A7A6E" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="24" y1="20" x2="24" y2="36" stroke="#1A7A6E" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="34" y1="24" x2="34" y2="32" stroke="#1A7A6E" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Horizon / destination dot -->
+  <circle cx="50" cy="28" r="7" fill="#1A7A6E"/>
+
+  <!-- Wordmark -->
+  <text x="66" y="37"
+        font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
+        font-size="26"
+        font-weight="700"
+        fill="#1F3864"
+        letter-spacing="-0.4">Pierway</text>
+
+</svg>
