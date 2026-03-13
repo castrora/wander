@@ -1,5 +1,5 @@
 """
-Wander — Port of Seattle Prospect List Builder v4
+Pierway — Port of Seattle Prospect List Builder v4
 Generates research/port-of-seattle-prospects.xlsx
 
 Sheets:
@@ -81,7 +81,7 @@ ws1 = wb.active
 ws1.title = "Priority Contacts"
 
 H1 = (["Organization", "Category", "Contact Name", "Title",
-        "Email", "Phone", "Targeted Pitch (QR / Wander)",
+        "Email", "Phone", "Targeted Pitch (QR / Pierway)",
         "LinkedIn / Source"] + TRACK_HDRS)
 ws1.append(H1)
 hdr(ws1, 1, DARK_BLUE)
@@ -104,12 +104,12 @@ port_rows = [
     ["Port of Seattle", "Port — Cruise BD",
      "Marie Ellingson", "Manager, Cruise Services & Business Development",
      "mellingson@portseattle.org", "(206) 787-3529",
-     "Hi Marie — I'm building Wander, an AI walking platform for cruise passengers in Seattle. I'd love to understand the vendor/partner process for QR code placement at Pier 91 and Pier 66. Could we set up a 20-minute call?",
+     "Hi Marie — I'm building Pierway, an AI walking platform for cruise passengers in Seattle. I'd love to understand the vendor/partner process for QR code placement at Pier 91 and Pier 66. Could we set up a 20-minute call?",
      "portseattle.org/contacts/cruise-terminal-manager"],
     ["Port of Seattle", "Port — Public Affairs",
      "Rosie Courtney", "Sr. Manager, Cruise Public Affairs & Community Engagement",
      "", "",
-     "Hi Rosie — Wander is a new visitor experience platform launching in Seattle for cruise passengers. We'd love to explore whether our AI walking routes fit the Port's community engagement goals.",
+     "Hi Rosie — Pierway is a new visitor experience platform launching in Seattle for cruise passengers. We'd love to explore whether our AI walking routes fit the Port's community engagement goals.",
      '"Port of Seattle" "Rosie Courtney"'],
 ]
 for row_data in port_rows:
@@ -120,22 +120,22 @@ vs_rows = [
     ["Visit Seattle", "Tourism — Destination Dev",
      "Marco Leal", "VP, Destination Development",
      "mleal@visitseattle.org", "206.461.5816",
-     "Hi Marco — I'm launching Wander, an AI-powered walking platform that converts pedestrian exploration into verified local commerce for Seattle merchants. Given your destination development mandate, I think there's a strong alignment. Would love 20 minutes.",
+     "Hi Marco — I'm launching Pierway, an AI-powered walking platform that converts pedestrian exploration into verified local commerce for Seattle merchants. Given your destination development mandate, I think there's a strong alignment. Would love 20 minutes.",
      "visitseattle.org/about-us/leadership/"],
     ["Visit Seattle", "Tourism — Executive",
      "Tammy Canavan", "President & CEO",
      "tcanavan@visitseattle.org", "206.461.5833",
-     "Hi Tammy — Wander is building AI walking routes for the 2M+ cruise passengers arriving in Seattle in 2026. We're looking to partner with Visit Seattle to embed QR codes at terminals and hotels. Happy to share a one-pager at your convenience.",
+     "Hi Tammy — Pierway is building AI walking routes for the 2M+ cruise passengers arriving in Seattle in 2026. We're looking to partner with Visit Seattle to embed QR codes at terminals and hotels. Happy to share a one-pager at your convenience.",
      "visitseattle.org/about-us/leadership/"],
     ["Visit Seattle", "Tourism — Sales & Marketing",
      "Kelly Saling", "EVP Sales & Marketing & Chief Business Officer",
      "ksaling@visitseattle.org", "206.461.5802",
-     "Hi Kelly — Wander is a new AI walking experience platform targeting Seattle's 2026 cruise season. We see strong co-marketing potential with Visit Seattle — happy to explore what a partnership could look like.",
+     "Hi Kelly — Pierway is a new AI walking experience platform targeting Seattle's 2026 cruise season. We see strong co-marketing potential with Visit Seattle — happy to explore what a partnership could look like.",
      "visitseattle.org/about-us/leadership/"],
     ["Visit Seattle", "Tourism — Marketing",
      "Stephanie Byington", "Chief Marketing Officer",
      "sbyington@visitseattle.org", "206.461.5809",
-     "Hi Stephanie — We're building Wander, a narrative-driven AI walking platform for Seattle cruise passengers, and documenting the build publicly. Potential co-marketing story around authentic Seattle discovery.",
+     "Hi Stephanie — We're building Pierway, a narrative-driven AI walking platform for Seattle cruise passengers, and documenting the build publicly. Potential co-marketing story around authentic Seattle discovery.",
      "visitseattle.org/about-us/leadership/"],
 ]
 for row_data in vs_rows:
@@ -146,12 +146,12 @@ wa_rows = [
     ["State of WA Tourism", "Tourism — Partnerships",
      "Mike Moe", "Director, Strategic Partnerships & Tourism Development",
      "tourisminfo@stateofwatourism.com", "",
-     "Hi Mike — Wander is a new AI walking experience platform launching at the Port of Seattle for the 2026 cruise season. Given your statewide partnerships mandate, I'd love to explore whether Wander fits into WA Tourism's distribution strategy.",
+     "Hi Mike — Pierway is a new AI walking experience platform launching at the Port of Seattle for the 2026 cruise season. Given your statewide partnerships mandate, I'd love to explore whether Pierway fits into WA Tourism's distribution strategy.",
      "industry.stateofwatourism.com/staff-and-board/"],
     ["State of WA Tourism", "Tourism — Executive",
      "David Blandford", "CEO",
      "tourisminfo@stateofwatourism.com", "",
-     "Hi David — Launching Wander in Seattle for cruise season 2026 — an AI walking platform that drives verified foot traffic to local merchants. Given your background at Visit Seattle, I'd value your perspective on where it fits in the state tourism ecosystem.",
+     "Hi David — Launching Pierway in Seattle for cruise season 2026 — an AI walking platform that drives verified foot traffic to local merchants. Given your background at Visit Seattle, I'd value your perspective on where it fits in the state tourism ecosystem.",
      "industry.stateofwatourism.com/staff-and-board/"],
 ]
 for row_data in wa_rows:
@@ -168,7 +168,7 @@ ws2 = wb.create_sheet("Cruise Lines")
 
 H2 = (["Company", "Terminal", "Priority", "New 2026?",
         "Contact Name", "Title", "Email", "Phone",
-        "Targeted Pitch (QR / Wander)", "Source / LinkedIn"] + TRACK_HDRS)
+        "Targeted Pitch (QR / Pierway)", "Source / LinkedIn"] + TRACK_HDRS)
 ws2.append(H2)
 hdr(ws2, 1, DARK_BLUE)
 NC2 = len(H2)
@@ -178,12 +178,12 @@ cruise_rows = [
     ["Holland America Line", "Pier 91", "HIGH", "No",
      "Jessica Ashe", "Sr. Director, Shore Excursions & Future Cruises",
      "", "",
-     "Hi Jessica — I'm launching Wander, an AI walking experience platform for cruise passengers disembarking in Seattle. I'd love to explore embedding Wander QR codes in HAL's shore excursion materials as a complimentary digital option for passengers with self-guided time. Could we connect?",
+     "Hi Jessica — I'm launching Pierway, an AI walking experience platform for cruise passengers disembarking in Seattle. I'd love to explore embedding Pierway QR codes in HAL's shore excursion materials as a complimentary digital option for passengers with self-guided time. Could we connect?",
      "linkedin.com/in/jessicaashe55/"],
     ["Holland America Line", "Pier 91", "HIGH", "No",
      "Carole Biencourt", "VP, Onboard Revenue",
      "", "1-888-425-9376",
-     "Hi Carole — Following your January 2026 announcement on new cultural tours, I wanted to introduce Wander — an AI walking platform for Seattle port days that complements HAL's shore excursion offering with a self-guided narrative option.",
+     "Hi Carole — Following your January 2026 announcement on new cultural tours, I wanted to introduce Pierway — an AI walking platform for Seattle port days that complements HAL's shore excursion offering with a self-guided narrative option.",
      "prnewswire.com — HAL 150 Cultural Tours Jan 2026"],
     ["Holland America Line", "Pier 91", "HIGH", "No",
      "Shore Excursions (dept)", "Shore Excursions Department",
@@ -193,62 +193,62 @@ cruise_rows = [
     ["Holland America Line", "Pier 91", "HIGH", "No",
      "Partnerships (general)", "Partnerships Inbox",
      "partnerships@hollandamerica.com", "",
-     "Public partnerships email. HAL HQ is at 450 Third Ave W, Seattle WA 98119 — same city as Wander.",
+     "Public partnerships email. HAL HQ is at 450 Third Ave W, Seattle WA 98119 — same city as Pierway.",
      "hollandamerica.com/contact-us"],
 
     ("_SEC", "PRINCESS CRUISES  |  princess.com  |  Pier 91  |  ~300,000+ pax  |  PRIORITY: HIGH", TEAL),
     ["Princess Cruises", "Pier 91", "HIGH", "No",
      "Wilkin Mes", "VP, Port Operations",
      "", "1-800-774-6237",
-     "Hi Wilkin — I'm launching Wander, an AI walking platform for cruise passengers during Seattle port days. I'd love to understand how Princess manages vendor placement at Pier 91, and whether a QR code partnership would fit within your port operations framework.",
+     "Hi Wilkin — I'm launching Pierway, an AI walking platform for cruise passengers during Seattle port days. I'd love to understand how Princess manages vendor placement at Pier 91, and whether a QR code partnership would fit within your port operations framework.",
      "princess.com/news/news-releases/2023/06/cruise-and-maritime-veteran-wilkin-mes"],
     ["Princess Cruises", "Pier 91", "HIGH", "No",
      "Terry Thornton", "Chief Commercial Officer",
      "", "1-800-774-6237",
-     "Hi Terry — Wander is a new AI-powered walking platform for Seattle port days that could complement Princess's shore excursion offering. Happy to share a one-pager on the commercial model — CPV-based, no upfront cost to Princess.",
+     "Hi Terry — Pierway is a new AI-powered walking platform for Seattle port days that could complement Princess's shore excursion offering. Happy to share a one-pager on the commercial model — CPV-based, no upfront cost to Princess.",
      "princess.com/news/news-releases/2023/03/terry-thornton-named"],
 
     ("_SEC", "NORWEGIAN CRUISE LINE  |  ncl.com  |  Pier 66  |  ~250,000+ pax  |  PRIORITY: HIGH", TEAL),
     ["Norwegian Cruise Line", "Pier 66", "HIGH", "No",
      "Katty Byrd", "SVP, Guest Services (incl. Shore Excursions)",
      "kbyrd@ncl.com", "1-866-625-1164",
-     "Hi Katty — I'm building Wander, an AI walking experience for NCL passengers during Seattle port days. It's a zero-cost, self-guided complement to your existing shore excursion menu. Would love 20 minutes to show you what we're building.",
+     "Hi Katty — I'm building Pierway, an AI walking experience for NCL passengers during Seattle port days. It's a zero-cost, self-guided complement to your existing shore excursion menu. Would love 20 minutes to show you what we're building.",
      "elliott.org/company-contacts/ncl | ncl.com/newsroom/katty-byrd"],
     ["Norwegian Cruise Line", "Pier 66", "HIGH", "No",
      "Milos Cicic", "Manager, Destination Services, Shore Excursions",
      "", "",
-     "Hi Milos — Wander is an AI-powered walking platform launching in Seattle for cruise passengers. I'd love to explore whether it fits within NCL's destination services offering as a complimentary self-guided option.",
+     "Hi Milos — Pierway is an AI-powered walking platform launching in Seattle for cruise passengers. I'd love to explore whether it fits within NCL's destination services offering as a complimentary self-guided option.",
      '"Norwegian Cruise Line" "Milos Cicic"'],
 
     ("_SEC", "VIRGIN VOYAGES  |  virginvoyages.com  |  Pier 91  |  NEW 2026 ★  |  PRIORITY: HIGHEST — outreach now", ORANGE),
     ["Virgin Voyages", "Pier 91", "HIGHEST ★", "YES — 2026",
      "Koreen McNutt", "VP, Agency & Business Development",
      "", "",
-     "Hi Koreen — Congrats on the Seattle launch with Brilliant Lady! I'm building Wander — an AI walking experience for Virgin passengers during Seattle port days. Given Voyages' ethos around curated experiences, I think Wander's narrative-native approach could be a strong fit. Would love to connect before the season opens.",
+     "Hi Koreen — Congrats on the Seattle launch with Brilliant Lady! I'm building Pierway — an AI walking experience for Virgin passengers during Seattle port days. Given Voyages' ethos around curated experiences, I think Pierway's narrative-native approach could be a strong fit. Would love to connect before the season opens.",
      "linkedin.com/in/koreen-mcnutt/"],
     ["Virgin Voyages", "Pier 91", "HIGHEST ★", "YES — 2026",
      "Kristy Woolums", "Sr. Director, National Strategic Accounts",
      "", "",
-     "Hi Kristy — I'm launching Wander in Seattle for the 2026 Alaska season. Given your focus on national strategic partnerships, I'd love to explore whether Wander's AI walking experience could be embedded as a value-add for Virgin Sailors during Seattle port days.",
+     "Hi Kristy — I'm launching Pierway in Seattle for the 2026 Alaska season. Given your focus on national strategic partnerships, I'd love to explore whether Pierway's AI walking experience could be embedded as a value-add for Virgin Sailors during Seattle port days.",
      "travelpulse.com — VV Sales Appointments"],
 
     ("_SEC", "MSC CRUISES  |  msccruises.com  |  Pier 91  |  NEW 2026 ★  |  PRIORITY: HIGHEST — outreach now", ORANGE),
     ["MSC Cruises", "Pier 91", "HIGHEST ★", "YES — 2026",
      "Lynn Torrent", "President, MSC Cruises North America",
      "", "",
-     "Hi Lynn — Exciting to see MSC bringing MSC Poesia to Seattle in 2026. I'm building Wander — an AI-powered walking experience for cruise passengers during port days. As MSC stands up its Seattle program, I'd love to explore a QR placement partnership early. Happy to send a one-pager.",
+     "Hi Lynn — Exciting to see MSC bringing MSC Poesia to Seattle in 2026. I'm building Pierway — an AI-powered walking experience for cruise passengers during port days. As MSC stands up its Seattle program, I'd love to explore a QR placement partnership early. Happy to send a one-pager.",
      "linkedin.com/in/lynn-torrent-a2a0ab119/"],
     ["MSC Cruises", "Pier 91", "HIGHEST ★", "YES — 2026",
      "Gianluca Suprani", "SVP, Global Port Development & Shore Activities",
      "", "",
-     "Hi Gianluca — I'm building Wander, an AI walking experience platform launching at the Port of Seattle for the 2026 season. As the person overseeing global port development and shore activities, I'd love your perspective on how Wander could complement MSC's port day offering.",
+     "Hi Gianluca — I'm building Pierway, an AI walking experience platform launching at the Port of Seattle for the 2026 season. As the person overseeing global port development and shore activities, I'd love your perspective on how Pierway could complement MSC's port day offering.",
      "seatrade-cruise.com/people-opinions — Gianluca Suprani"],
 
     ("_SEC", "MEDIUM PRIORITY  |  Royal Caribbean / Celebrity / Carnival", MID_BLUE),
     ["Royal Caribbean International", "Pier 91", "MEDIUM", "No",
      "", "Destination Experiences Team",
      "", "",
-     "Wander pitch: AI walking routes for Seattle port days, performance-based model, QR code placement, complements shore excursion menu.",
+     "Pierway pitch: AI walking routes for Seattle port days, performance-based model, QR code placement, complements shore excursion menu.",
      '"Royal Caribbean" "Destination Experiences" Seattle'],
     ["Celebrity Cruises", "Pier 91", "MEDIUM", "No",
      "", "Shore Excursions / Partnerships",
@@ -258,7 +258,7 @@ cruise_rows = [
     ["Carnival Cruise Line", "Pier 91", "MEDIUM", "No",
      "", "Shore Excursions / Destination",
      "", "",
-     "Wander pitch: AI walking platform, QR at disembarkation, performance-based CPV model.",
+     "Pierway pitch: AI walking platform, QR at disembarkation, performance-based CPV model.",
      '"Carnival Cruise Line" "Shore Excursions" Alaska Seattle'],
 ]
 
@@ -287,7 +287,7 @@ ws3 = wb.create_sheet("Hotels")
 
 H3 = (["Hotel", "Terminal", "Distance", "Stars",
         "Contact Name", "Title", "Email", "Phone",
-        "Targeted Pitch (QR / Wander)", "Source / LinkedIn"] + TRACK_HDRS)
+        "Targeted Pitch (QR / Pierway)", "Source / LinkedIn"] + TRACK_HDRS)
 ws3.append(H3)
 hdr(ws3, 1, MID_BLUE)
 NC3 = len(H3)
@@ -297,49 +297,49 @@ hotel_rows = [
     ["The Edgewater Hotel", "Pier 66", "0.14 mi — walk-in", "4★",
      "Ian McClendon", "General Manager",
      "", "(206) 792-5959",
-     "Hi Ian — I'm launching Wander, an AI walking experience for cruise passengers during Seattle port days. Given Edgewater's location literally steps from Pier 66, a QR code in your lobby or concierge desk would reach passengers the moment they're deciding what to do. No cost to the hotel — we'd love to discuss a partnership.",
+     "Hi Ian — I'm launching Pierway, an AI walking experience for cruise passengers during Seattle port days. Given Edgewater's location literally steps from Pier 66, a QR code in your lobby or concierge desk would reach passengers the moment they're deciding what to do. No cost to the hotel — we'd love to discuss a partnership.",
      "Luxury Travel Magazine — Edgewater Refresh 2025"],
     ["Seattle Marriott Waterfront", "Pier 66", "0.1 mi", "4★",
      "Haley Connors", "Destination Sales Executive",
      "", "(206) 443-5000",
-     "Hi Haley — I'm building Wander, an AI-powered walking platform for cruise passengers. Given your role in destination sales and Marriott's Park & Cruise package, I think Wander QR codes in guest rooms or the concierge area would add real value. Happy to explore a partnership.",
+     "Hi Haley — I'm building Pierway, an AI-powered walking platform for cruise passengers. Given your role in destination sales and Marriott's Park & Cruise package, I think Pierway QR codes in guest rooms or the concierge area would add real value. Happy to explore a partnership.",
      "rocketreach.co — Seattle Marriott Waterfront"],
     ["Seattle Marriott Waterfront", "Pier 66", "0.1 mi", "4★",
      "Amrit Sandhu", "General Manager",
      "", "(206) 443-5000",
-     "Hi Amrit — I'm launching Wander for the 2026 cruise season — an AI walking experience that adds value to Seattle port days. Given Marriott Waterfront's position at Pier 66 and your existing cruise packages, this could be a natural partnership.",
+     "Hi Amrit — I'm launching Pierway for the 2026 cruise season — an AI walking experience that adds value to Seattle port days. Given Marriott Waterfront's position at Pier 66 and your existing cruise packages, this could be a natural partnership.",
      "rocketreach.co — Seattle Marriott Waterfront"],
     ["Mayflower Park Hotel", "Pier 66 & 91", "1.0 mi / 3.2 mi", "3★",
      "Leslie Womack", "Director of Sales",
      "", "(206) 382-6991",
-     "Hi Leslie — Wander is an AI walking platform launching for Seattle's 2026 cruise season. Given Mayflower's active cruise packages and shuttle to both terminals, your guests are exactly our target user. I'd love to discuss placing Wander QR codes at the front desk or in cruise packages.",
+     "Hi Leslie — Pierway is an AI walking platform launching for Seattle's 2026 cruise season. Given Mayflower's active cruise packages and shuttle to both terminals, your guests are exactly our target user. I'd love to discuss placing Pierway QR codes at the front desk or in cruise packages.",
      "rocketreach.co/leslie-womack"],
     ["Mayflower Park Hotel", "Pier 66 & 91", "1.0 mi / 3.2 mi", "3★",
      "Andrew Harris", "General Manager",
      "press@azulhospitality.com", "(206) 623-8700",
-     "Hi Andrew — Congratulations on your appointment at Mayflower. I'm building Wander — an AI walking experience for cruise passengers — and I'd love to explore embedding Wander in Mayflower's cruise offering given your shuttle program to both Pier 66 and Pier 91.",
+     "Hi Andrew — Congratulations on your appointment at Mayflower. I'm building Pierway — an AI walking experience for cruise passengers — and I'd love to explore embedding Pierway in Mayflower's cruise offering given your shuttle program to both Pier 66 and Pier 91.",
      "hotel-online.com — Andrew Harris Appointment Jan 2026"],
     ["The Sound Hotel", "Pier 66", "0.3 mi", "3★",
      "Kelly Keith", "Sales",
      "", "(206) 441-7456",
-     "Hi — I'm building Wander, an AI walking experience for cruise passengers in Seattle. The Sound Hotel's Belltown location and cruise transfer partnership make it a natural fit for Wander QR code placement. Happy to connect with whoever leads cruise partnerships.",
+     "Hi — I'm building Pierway, an AI walking experience for cruise passengers in Seattle. The Sound Hotel's Belltown location and cruise transfer partnership make it a natural fit for Pierway QR code placement. Happy to connect with whoever leads cruise partnerships.",
      "linkedin.com/in/kelly-keith-a2585833/"],
 
     ("_SEC", "PIER 91 — SMITH COVE  (Queen Anne / Magnolia area)", MID_BLUE),
     ["Mediterranean Inn", "Pier 91", "1.5 mi", "3★",
      "Sheila Ordonez", "General Manager",
      "", "(206) 428-4700",
-     "Hi Sheila — I'm launching Wander, an AI walking experience for cruise passengers during Seattle port days. The Mediterranean Inn's proximity to Pier 91 and your active shuttle program make this a strong fit for a QR code partnership. No cost to the hotel — just a better guest experience.",
+     "Hi Sheila — I'm launching Pierway, an AI walking experience for cruise passengers during Seattle port days. The Mediterranean Inn's proximity to Pier 91 and your active shuttle program make this a strong fit for a QR code partnership. No cost to the hotel — just a better guest experience.",
      "linkedin.com/in/sheilaordonez"],
     ["Astra Hotel Seattle", "Pier 91", "2.5 mi", "4★",
      "", "General Manager / Director of Sales",
      "", "",
-     "Wander pitch: Your 'Snooze and Cruise' package guests are exactly our target. QR code in room or at checkout could point them to Wander for their port day experience.",
+     "Pierway pitch: Your 'Snooze and Cruise' package guests are exactly our target. QR code in room or at checkout could point them to Pierway for their port day experience.",
      '"Astra Hotel Seattle" "General Manager" OR "Director of Sales"'],
     ["Staypineapple The Maxwell Hotel", "Pier 91", "1.2 mi", "3★",
      "", "General Manager / Director of Sales",
      "", "",
-     "Wander pitch: Closest full-service hotel to Pier 91 with no existing cruise program — opportunity to be the first to offer a curated port day experience through Wander QR codes.",
+     "Pierway pitch: Closest full-service hotel to Pier 91 with no existing cruise program — opportunity to be the first to offer a curated port day experience through Pierway QR codes.",
      '"Maxwell Hotel Seattle" OR "Staypineapple Seattle" "General Manager"'],
 ]
 
@@ -368,7 +368,7 @@ ws4 = wb.create_sheet("Other Targets")
 
 H4 = (["Organization", "Category", "Why They Matter",
         "Contact Name / Role to Find", "Website / Contact",
-        "Targeted Pitch (QR / Wander)"] + TRACK_HDRS)
+        "Targeted Pitch (QR / Pierway)"] + TRACK_HDRS)
 ws4.append(H4)
 hdr(ws4, 1, PURPLE)
 NC4 = len(H4)
@@ -379,63 +379,63 @@ other_rows = [
      "Kevin Clark (CEO) sits on Visit Seattle board — direct connection to tourism ecosystem. Argosy runs Seattle waterfront tours and charters. Tourist-facing, high foot traffic.",
      "Kevin Clark — CEO  |  Find GM / Partnerships Director",
      "argosycruises.com",
-     "Hi — I'm building Wander, an AI walking experience for visitors in Seattle. Argosy guests are exactly our target — arriving at the waterfront with time to explore on foot. A QR code on your boats or dock could funnel guests directly into Wander routes."],
+     "Hi — I'm building Pierway, an AI walking experience for visitors in Seattle. Argosy guests are exactly our target — arriving at the waterfront with time to explore on foot. A QR code on your boats or dock could funnel guests directly into Pierway routes."],
     ["Washington State Ferries", "Ferry system — Colman Dock",
      "Colman Dock (downtown Seattle) serves millions of ferry passengers annually. Foot passengers disembark directly into downtown Seattle — identical behavioral profile to cruise passengers.",
      "Find: Director of Passenger Experience or Marketing",
      "wsdot.wa.gov/ferries",
-     "Wander pitch: Ferry foot passengers disembark at Colman Dock with time to explore Seattle. QR code at the dock or on the ferry itself reaches a captive audience in exploration mode."],
+     "Pierway pitch: Ferry foot passengers disembark at Colman Dock with time to explore Seattle. QR code at the dock or on the ferry itself reaches a captive audience in exploration mode."],
 
     ("_SEC", "HIGH-TRAFFIC TOURIST ATTRACTIONS  (QR placement in physical space)", MID_BLUE),
     ["Pike Place Market", "Landmark / Attraction",
      "~10M visitors/year, mostly pedestrian, many first-timers. Visitor info center is a natural QR placement point.",
      "Find: Director of Marketing or Visitor Services Manager",
      "pikeplacemarket.org",
-     "Wander pitch: Pike Place is often the first stop for cruise passengers. A Wander QR code at the visitor info center or market entrance puts us in front of pedestrians the moment they start exploring."],
+     "Pierway pitch: Pike Place is often the first stop for cruise passengers. A Pierway QR code at the visitor info center or market entrance puts us in front of pedestrians the moment they start exploring."],
     ["Space Needle / Seattle Center", "Landmark / Attraction",
      "Top tourist destination near Pier 91 corridor. Visitors are already in 'explore Seattle' mode.",
      "Find: Director of Guest Experience or Marketing",
      "spaceneedle.com | seattlecenter.com",
-     "Wander pitch: Space Needle visitors are tourists in active exploration mode. A QR code at ticketing or the base of the needle reaches the exact user Wander is built for."],
+     "Pierway pitch: Space Needle visitors are tourists in active exploration mode. A QR code at ticketing or the base of the needle reaches the exact user Pierway is built for."],
     ["Chihuly Garden and Glass", "Landmark / Attraction",
      "Adjacent to Space Needle. High-value tourist attraction. Visitors are pre-qualified as engaged, curious tourists.",
      "Find: GM or Director of Marketing",
      "chihulygardenandglass.com",
-     "Wander pitch: Post-exhibit, Chihuly visitors are walking back into Seattle Center with nowhere to go next. Wander fills that gap with a curated next stop."],
+     "Pierway pitch: Post-exhibit, Chihuly visitors are walking back into Seattle Center with nowhere to go next. Pierway fills that gap with a curated next stop."],
     ["Museum of Pop Culture (MoPOP)", "Museum / Attraction",
      "Seattle Center. Tourist-facing. High foot traffic from cruise visitors.",
      "Find: Director of Visitor Experience or Partnerships",
      "mopop.org",
-     "Standard Wander QR pitch — curated walking routes for visitors leaving the museum."],
+     "Standard Pierway QR pitch — curated walking routes for visitors leaving the museum."],
 
     ("_SEC", "TOUR OPERATORS & EXCURSION COMPANIES  (existing shore excursion vendors)", ORANGE),
     ["Viator / TripAdvisor Experiences", "Online tour marketplace",
-     "Viator is the dominant shore excursion marketplace used by cruise passengers pre-trip. Getting listed means Wander appears when passengers search 'Seattle port day activities.'",
+     "Viator is the dominant shore excursion marketplace used by cruise passengers pre-trip. Getting listed means Pierway appears when passengers search 'Seattle port day activities.'",
      "Find: Supplier Partnerships or Supplier Onboarding contact",
      "viator.com/partner",
-     "Wander listing pitch: Wander as a free/freemium digital experience with paid merchant layer. List as a 'Self-Guided AI Walking Tour' category."],
+     "Pierway listing pitch: Pierway as a free/freemium digital experience with paid merchant layer. List as a 'Self-Guided AI Walking Tour' category."],
     ["GetYourGuide", "Online tour marketplace",
      "Second-largest tours/activities marketplace globally. Used heavily by European cruise passengers (high overlap with MSC, Cunard, Silversea demographics).",
      "Find: Supplier Partnerships",
      "getyourguide.com/supplier",
-     "Same as Viator — list Wander as AI walking tour. European tourist focus aligns with MSC's Seattle debut."],
+     "Same as Viator — list Pierway as AI walking tour. European tourist focus aligns with MSC's Seattle debut."],
     ["Gray Line Seattle / Grayline Tours", "Local tour operator",
-     "Established shore excursion vendor for Seattle cruise terminals. Existing relationship with cruise lines. Could white-label or co-distribute Wander.",
+     "Established shore excursion vendor for Seattle cruise terminals. Existing relationship with cruise lines. Could white-label or co-distribute Pierway.",
      "Find: Operations Director or GM",
      "graylineseattle.com",
-     "Wander partnership pitch: We augment your bus tour offering with a self-guided AI option for passengers who prefer walking. Rev share model — you distribute, we pay per visit."],
+     "Pierway partnership pitch: We augment your bus tour offering with a self-guided AI option for passengers who prefer walking. Rev share model — you distribute, we pay per visit."],
 
     ("_SEC", "AIRPORT & PRE-ARRIVAL  (catching tourists before they reach the port)", PURPLE),
     ["Sea-Tac Airport — Ground Transportation / Concierge", "Airport",
      "Many cruise passengers fly into Sea-Tac the day before and go downtown. Airport concierge / info kiosks are a pre-arrival distribution point.",
      "Find: Director of Guest Experience, Airport Concierge Services, or Advertising/Retail Partnerships",
      "portseattle.org/sea-tac",
-     "Wander pitch: Catch arriving cruise passengers at baggage claim or the airport info center before they reach their hotel. A QR code here plants the seed a day early."],
+     "Pierway pitch: Catch arriving cruise passengers at baggage claim or the airport info center before they reach their hotel. A QR code here plants the seed a day early."],
     ["Alaska Airlines (Seattle Hub)", "Airline",
      "Alaska Airlines is Sea-Tac's dominant carrier and Seattle's home airline. Many Alaska cruise passengers fly Alaska Air. In-flight or lounge QR placement reaches them pre-arrival.",
      "Find: Director of Partnerships or Inflight Experience",
      "alaskaair.com",
-     "Wander pitch: Include Wander in Alaska Airlines' Seattle destination content — seatback screens, Sky Magazine, or Lounge digital displays. Reach cruise passengers before they land."],
+     "Pierway pitch: Include Pierway in Alaska Airlines' Seattle destination content — seatback screens, Sky Magazine, or Lounge digital displays. Reach cruise passengers before they land."],
 ]
 
 row_num = 2
@@ -462,7 +462,7 @@ ws5 = wb.create_sheet("How To Use")
 ws5.column_dimensions["A"].width = 115
 
 guide = [
-    ("WANDER — Prospect & Outreach Tracker  |  Port of Seattle  |  v4  |  2026-03-12", True, DARK_BLUE, WHITE, 14),
+    ("PIERWAY — Prospect & Outreach Tracker  |  Port of Seattle  |  v4  |  2026-03-12", True, DARK_BLUE, WHITE, 14),
     ("", False, WHITE, "000000", 10),
     ("TRACKING COLUMNS — HOW TO USE", True, TEAL, WHITE, 11),
     ("'Outreach Sent?' — Enter Y or the date you sent the message (e.g. Mar 14)", False, LIGHT_TEAL, "000000", 10),
@@ -499,7 +499,7 @@ guide = [
     ("portseattle.org | visitseattle.org | industry.stateofwatourism.com | hollandamerica.com | ncl.com/newsroom", False, LIGHT_GREY, "000000", 10),
     ("elliott.org/company-contacts/ncl | princess.com/news | seatrade-cruise.com | travelmarketreport.com", False, LIGHT_GREY, "000000", 10),
     ("travelpulse.com | hotel-online.com | hospitalitynet.org | rocketreach.co | prnewswire.com", False, LIGHT_GREY, "000000", 10),
-    ("Compiled: 2026-03-12 by Claude (Wander project)", False, LIGHT_GREY, "000000", 10),
+    ("Compiled: 2026-03-12 by Claude (Pierway project)", False, LIGHT_GREY, "000000", 10),
 ]
 
 for text, bold, bg, fg, size in guide:
