@@ -184,65 +184,85 @@ One person oversees strategy. AI executes. As ARR scales beyond $5M, headcount i
 
 ### Pierway Pilot — Technical Architecture (Built)
 
-The following architecture was built by one founder + AI in 3 days (March 12–14, 2026). Pierway is the Seattle consumer pilot of the Wander platform.
+The following architecture was built by one founder + AI in 3 days (March 12–14, 2026). Pierway is the Seattle consumer pilot of the Wander platform. Live at **walkpierway.com**.
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                     CONSUMER APP                        │
-│                  (React + Vite on Vercel)                │
-│                                                         │
-│  ┌───────────┐  ┌───────────┐  ┌──────────┐            │
-│  │ Preferences│  │ Route     │  │ Stop     │            │
-│  │ Builder   │──▶│ Overview  │──▶│ Detail   │           │
-│  └───────────┘  └─────┬─────┘  └────┬─────┘            │
-│       │               │             │                   │
-│       │         ┌─────┴─────┐  ┌────┴─────┐            │
-│       │         │ GPS Watch │  │ Walking  │             │
-│       │         │ (proximity│  │ Directions│            │
-│       │         │  alerts)  │  │ (steps)  │             │
-│       │         └───────────┘  └──────────┘             │
-└───────┼─────────────────────────────────────────────────┘
-        │
-        ▼
-┌───────────────────────────────────────────────────────┐
-│               VERCEL SERVERLESS LAYER                  │
-│                                                        │
-│  ┌──────────────────┐                                  │
-│  │ /api/generate-   │◀── Anthropic API key             │
-│  │   route.js       │    (server-side only)             │
-│  └────────┬─────────┘                                  │
-└───────────┼────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                      CONSUMER APP                             │
+│              walkpierway.com (React + Vite on Vercel)         │
+│                                                               │
+│  ┌──────────┐  ┌───────────┐  ┌───────────┐  ┌──────────┐   │
+│  │ Landing  │──▶│Preferences│──▶│Generating │──▶│ Route    │   │
+│  │          │  │ Builder   │  │           │  │ Overview │   │
+│  └──────────┘  └───────────┘  └───────────┘  └────┬─────┘   │
+│                     │                              │          │
+│                     │                         ┌────┴─────┐   │
+│                     │                         │ Stop     │   │
+│                     │                         │ Detail   │   │
+│                     │                         └──────────┘   │
+│                     │                              │          │
+│              ┌──────┴──────┐              ┌────────┴───────┐ │
+│              │ Proximity   │              │ Walking        │ │
+│              │ Alerts      │              │ Directions     │ │
+│              │ ├─ Stops    │              │ (Mapbox steps) │ │
+│              │ │  (150m)   │              └────────────────┘ │
+│              │ ├─ POIs     │                                 │
+│              │ │  (100m)   │                                 │
+│              │ └─ Off-route│                                 │
+│              │    (0.25mi) │                                 │
+│              └─────────────┘                                 │
+└──────────────────────┬───────────────────────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────────────────────┐
+│                 VERCEL SERVERLESS LAYER                        │
+│                                                               │
+│  ┌──────────────────┐                                         │
+│  │ /api/generate-   │◀── ANTHROPIC_API_KEY (server-side only) │
+│  │   route.js       │                                         │
+│  └────────┬─────────┘                                         │
+└───────────┼───────────────────────────────────────────────────┘
             │
             ▼
-┌────────────────────────────────────────────────────────┐
-│                  EXTERNAL SERVICES                      │
-│                                                         │
-│  ┌─────────────┐  ┌──────────┐  ┌───────────────────┐  │
-│  │ Claude API  │  │ Mapbox   │  │ Supabase          │  │
-│  │ (sonnet 4.6)│  │ GL JS +  │  │ ┌───────────────┐ │  │
-│  │             │  │ Directions│  │ │ pois table    │ │  │
-│  │ Route gen,  │  │ API      │  │ │ 16 Seattle    │ │  │
-│  │ narration,  │  │          │  │ │ POIs seeded   │ │  │
-│  │ stop content│  │ Maps,    │  │ └───────────────┘ │  │
-│  │             │  │ polylines,│  │                   │  │
-│  │             │  │ walk steps│  │ (Future: merchants│  │
-│  │             │  │          │  │  check-ins, billing│  │
-│  └─────────────┘  └──────────┘  └───────────────────┘  │
-│                                                         │
-│  ┌─────────────┐  ┌──────────────────┐                  │
-│  │ PostHog     │  │ Browser APIs     │                  │
-│  │ Analytics   │  │ ├─ Geolocation   │                  │
-│  │ (9 events)  │  │ ├─ Web Speech    │                  │
-│  │             │  │ ├─ Vibration     │                  │
-│  └─────────────┘  └──────────────────┘                  │
-└─────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                    EXTERNAL SERVICES                          │
+│                                                               │
+│  ┌─────────────┐  ┌──────────────┐  ┌─────────────────────┐  │
+│  │ Claude API  │  │ Mapbox       │  │ Supabase            │  │
+│  │ (sonnet 4.6)│  │ GL JS +     │  │ ┌─────────────────┐ │  │
+│  │             │  │ Directions   │  │ │ pois table      │ │  │
+│  │ Route gen,  │  │ API          │  │ │ 17 Seattle POIs │ │  │
+│  │ narration,  │  │              │  │ │ (inc. Central   │ │  │
+│  │ stop content│  │ Maps, tiles, │  │ │  Saloon)        │ │  │
+│  │             │  │ polylines,   │  │ └─────────────────┘ │  │
+│  │             │  │ walk steps   │  │                     │  │
+│  │             │  │              │  │ (Next: merchants,   │  │
+│  │             │  │ Token:       │  │  check-ins, billing)│  │
+│  │             │  │ domain-locked│  │                     │  │
+│  └─────────────┘  └──────────────┘  └─────────────────────┘  │
+│                                                               │
+│  ┌─────────────┐  ┌──────────────┐  ┌─────────────────────┐  │
+│  │ PostHog     │  │ Browser APIs │  │ Cloudflare          │  │
+│  │ Analytics   │  │ ├─ Geoloc.   │  │ DNS + domain:       │  │
+│  │ (9 events + │  │ ├─ Speech    │  │ walkpierway.com     │  │
+│  │  UTM track) │  │ ├─ Vibration │  │                     │  │
+│  └─────────────┘  └──────────────┘  └─────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
+
+                    DISTRIBUTION
+┌──────────────────────────────────────────────────────────────┐
+│  Cruise Terminal Flyers (Pier 66, Pier 91)                    │
+│  QR → walkpierway.com/?utm_source=cruise_flyer&utm_terminal= │
+│  PostHog funnel: scan → build → walk → check-in              │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 **Key architectural decisions:**
 - **No backend server** — Vercel serverless functions + Supabase replace a traditional backend
-- **API key isolation** — Anthropic key lives server-side only; Mapbox/Supabase/PostHog keys are public by design
-- **Client-side GPS** — Haversine distance checks for check-ins (50m), route-stop alerts (150m), and POI alerts (100m)
-- **Zero infrastructure ops** — fully managed: Vercel (hosting + functions), Supabase (database), PostHog (analytics)
+- **API key isolation** — Anthropic key lives server-side only; Mapbox token domain-locked to walkpierway.com
+- **Client-side GPS** — Haversine distance checks for check-ins (50m), route-stop alerts (150m), POI alerts (100m), off-route detection (0.25mi)
+- **Zero infrastructure ops** — fully managed: Vercel (hosting + functions), Supabase (database), PostHog (analytics), Cloudflare (DNS)
+- **GTM built in** — QR flyers with UTM tracking feed directly into PostHog conversion funnels
 - **Total build time: 3 days, 1 founder, 0 employees** — validates the 1-Person Enterprise thesis
 
 ---
