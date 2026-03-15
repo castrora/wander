@@ -48,7 +48,32 @@
 
 ---
 
+### R-005 — Build Complexity vs. Solo Founder Bandwidth
+**Date Raised:** 2026-03-12
+**Likelihood:** M | **Impact:** H | **Status:** Open
+**Description:** The full-lifecycle MVP (consumer app + verified visit engine + back office) is a materially larger build than a simple UI prototype. React, Supabase, Mapbox, Stripe Connect, and Claude API integration all in parallel — with no prior development background — carries real risk of scope creep, technical debt, and missed deadlines.
+**Mitigation:** Strict phased build sequence. Phase 1 (consumer app only) is the partner demo gate. Don't start Phase 2 until Phase 1 ships. Claude manages architecture and code; Ray drives requirements and testing. Weekly checkpoints on build velocity.
+**Owner:** Ray Castro
+
+---
+
+### R-006 — Accounts and Services Not Set Up
+**Date Raised:** 2026-03-12
+**Likelihood:** M | **Impact:** M | **Status:** Open
+**Description:** Build cannot start until Supabase, Mapbox, Stripe, Vercel, and pierway.io domain are set up. These are blocking dependencies.
+**Mitigation:** Set up all accounts before first line of code is written.
+**Owner:** Ray Castro
+**Action:** A-005
+
+---
+
 ## Open Action Items
+
+### A-005 — Set Up Build Infrastructure Accounts
+**Date:** 2026-03-12 | **Owner:** Ray Castro | **Status:** Open | **Due:** Before build starts
+**Description:** Set up: (1) Node.js LTS — install via `winget install OpenJS.NodeJS.LTS` (required before any code runs); (2) pierway.io domain purchase — Namecheap or Cloudflare Registrar, ~$35/yr; (3) Supabase account — free tier; (4) Mapbox account — free tier; (5) Stripe account — no monthly cost; (6) Vercel account — free tier; (7) Anthropic API account — pay-per-use; (8) GitHub repo for pierway codebase. Total monthly cost before revenue: ~$0.
+
+---
 
 ### A-001 — Map Network Into Cruise / Port Ecosystem
 **Date:** 2026-03-12 | **Owner:** Ray Castro | **Status:** Open | **Due:** Before next session
@@ -58,8 +83,9 @@
 ---
 
 ### A-002 — Define MVP Scope
-**Date:** 2026-03-12 | **Owner:** Ray Castro + Claude | **Status:** Open | **Due:** Next session
+**Date:** 2026-03-12 | **Owner:** Ray Castro + Claude | **Status:** Closed 2026-03-12
 **Description:** Define exactly what ships before May/June. Features in, features out. What is the smallest thing that proves the core behavior (pedestrian → route → merchant visit)?
+**Resolution:** MVP spec v2.0 written (pm/product/mvp-spec.md). Full-lifecycle scope confirmed: consumer app + verified visit engine + back office. Technical architecture documented (pm/product/technical-architecture.md).
 
 ---
 
@@ -76,4 +102,6 @@
 ---
 
 ## Closed Actions
-*(none yet)*
+
+### A-002 — Define MVP Scope
+**Closed:** 2026-03-12 — MVP spec v2.0 and technical architecture written. Scope confirmed as full lifecycle.

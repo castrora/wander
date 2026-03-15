@@ -1,5 +1,5 @@
 """
-Wander — Cold Introduction Email Builder
+Pierway — Cold Introduction Email Builder
 Generates gtm/wander-cold-intro-emails.docx
 
 Four audience-specific versions:
@@ -101,7 +101,7 @@ def add_body(doc, paragraphs):
 def add_signature(doc):
     add_para(doc, space_before=4, space_after=2)
     add_para(doc, "Ray Castro", bold=True, size=10.5, color=NAVY, space_before=0, space_after=1)
-    add_para(doc, "Founder, Wander", size=10, color=GREY, space_before=0, space_after=1)
+    add_para(doc, "Founder, Pierway", size=10, color=GREY, space_before=0, space_after=1)
     add_para(doc, "ray.s.castro@outlook.com", size=10, color=TEAL, space_before=0, space_after=1)
     add_para(doc, "pierway.io  ·  Seattle, WA", italic=True, size=9.5, color=GREY,
              space_before=0, space_after=0)
@@ -121,7 +121,7 @@ def page_break(doc):
 # ════════════════════════════════════════════════════════════════════════════
 # COVER / TITLE
 # ════════════════════════════════════════════════════════════════════════════
-add_para(doc, "WANDER", bold=True, size=28, color=NAVY,
+add_para(doc, "PIERWAY", bold=True, size=28, color=NAVY,
          align=WD_ALIGN_PARAGRAPH.CENTER, space_before=12, space_after=2)
 add_para(doc, "Cold Introduction Emails — 2026 Cruise Season Outreach",
          size=12, color=TEAL, align=WD_ALIGN_PARAGRAPH.CENTER,
@@ -161,17 +161,17 @@ add_label(doc, "A", "Port of Seattle",
           "Best for: Marie Ellingson (mellingson@portseattle.org) · Rosie Courtney")
 
 add_field(doc, "To",      "[Marie Ellingson]  <mellingson@portseattle.org>")
-add_field(doc, "Subject", "Wander — AI Walking Experience for Seattle Cruise Passengers | QR Code Placement Inquiry")
+add_field(doc, "Subject", "Pierway — AI Walking Experience for Seattle Cruise Passengers | QR Code Placement Inquiry")
 add_field(doc, "From",    "Ray Castro  <ray.s.castro@outlook.com>")
 
 add_body(doc, [
     "Hi Marie,",
 
-    "I'm Ray Castro, founder of Wander — an AI-powered walking experience platform launching in Seattle for the 2026 cruise season. Wander generates personalized walking routes for cruise passengers during their Seattle port days, embedding contextual recommendations for local merchants along the way.",
+    "I'm Ray Castro, founder of Pierway — an AI-powered walking experience platform launching in Seattle for the 2026 cruise season. Pierway generates personalized walking routes for cruise passengers during their Seattle port days, embedding contextual recommendations for local merchants along the way.",
 
-    "I'm reaching out because I'd like to understand the process for placing Wander QR codes at Pier 91 and Pier 66 — either at the disembarkation area, the visitor information point, or through a partner at the terminal. The goal is to give passengers a free, immediately useful resource the moment they step off the ship.",
+    "I'm reaching out because I'd like to understand the process for placing Pierway QR codes at Pier 91 and Pier 66 — either at the disembarkation area, the visitor information point, or through a partner at the terminal. The goal is to give passengers a free, immediately useful resource the moment they step off the ship.",
 
-    "The model is simple: passengers scan, get a personalized walking route, and discover Seattle on their own terms. Merchants pay Wander only when a passenger actually walks through their door — no impressions, no clicks, just verified visits.",
+    "The model is simple: passengers scan, get a personalized walking route, and discover Seattle on their own terms. Merchants pay Pierway only when a passenger actually walks through their door — no impressions, no clicks, just verified visits.",
 
     "Would you be open to a 20-minute call this week or next to understand what's possible? I'm flexible on timing and happy to come to the port in person.",
 ])
@@ -189,15 +189,15 @@ add_label(doc, "B", "Tourism Organization",
           "Best for: Marco Leal (mleal@visitseattle.org) · Tammy Canavan · State of WA Tourism")
 
 add_field(doc, "To",      "[Marco Leal]  <mleal@visitseattle.org>")
-add_field(doc, "Subject", "Wander — AI Walking Platform for Seattle's 2M+ Cruise Visitors in 2026 | Partnership Inquiry")
+add_field(doc, "Subject", "Pierway — AI Walking Platform for Seattle's 2M+ Cruise Visitors in 2026 | Partnership Inquiry")
 add_field(doc, "From",    "Ray Castro  <ray.s.castro@outlook.com>")
 
 add_body(doc, [
     "Hi Marco,",
 
-    "I'm Ray Castro, founder of Wander — an AI-powered urban walking platform built to convert Seattle's 2M+ annual cruise passengers into active local explorers and verified commerce for Seattle merchants.",
+    "I'm Ray Castro, founder of Pierway — an AI-powered urban walking platform built to convert Seattle's 2M+ annual cruise passengers into active local explorers and verified commerce for Seattle merchants.",
 
-    "Wander generates real-time, personalized walking routes for passengers during their Seattle port days — embedding contextual storytelling about the city alongside optional local merchant recommendations. Merchants pay only for confirmed in-store visits. No impressions. No ads. Just performance-based local commerce.",
+    "Pierway generates real-time, personalized walking routes for passengers during their Seattle port days — embedding contextual storytelling about the city alongside optional local merchant recommendations. Merchants pay only for confirmed in-store visits. No impressions. No ads. Just performance-based local commerce.",
 
     "Given Visit Seattle's mandate around destination development and the record 2026 cruise season ahead, I'd love to explore what a partnership could look like — whether that's QR code placement through your hotel network, co-distribution through tourism partners, or something else.",
 
@@ -217,7 +217,7 @@ add_label(doc, "C", "Cruise Line — Shore Excursions / Partnerships",
           "Best for: Koreen McNutt (Virgin Voyages) · Katty Byrd (NCL) · Jessica Ashe (Holland America)")
 
 add_field(doc, "To",      "[Koreen McNutt]  <[First.Last@virginvoyages.com]>")
-add_field(doc, "Subject", "Wander + [Virgin Voyages] — AI Walking Experience for Seattle Port Days | 2026 Season")
+add_field(doc, "Subject", "Pierway + [Virgin Voyages] — AI Walking Experience for Seattle Port Days | 2026 Season")
 add_field(doc, "From",    "Ray Castro  <ray.s.castro@outlook.com>")
 
 add_body(doc, [
@@ -225,11 +225,11 @@ add_body(doc, [
 
     "Congratulations on bringing Brilliant Lady to Seattle — it's an exciting debut for the Alaska season.",
 
-    "I'm Ray Castro, founder of Wander. We're building an AI-powered walking experience for cruise passengers during Seattle port days — personalized routes that help Sailors discover the city on their own terms, with optional merchant recommendations woven into the narrative. No sponsored stops. No ads. Just genuinely useful exploration.",
+    "I'm Ray Castro, founder of Pierway. We're building an AI-powered walking experience for cruise passengers during Seattle port days — personalized routes that help Sailors discover the city on their own terms, with optional merchant recommendations woven into the narrative. No sponsored stops. No ads. Just genuinely useful exploration.",
 
-    "The model is performance-based: merchants pay Wander only for confirmed visits, so there's no cost to [Virgin Voyages] and no obligation on Sailors. It's simply a better port day option — available through a QR code at disembarkation or in your pre-departure communications.",
+    "The model is performance-based: merchants pay Pierway only for confirmed visits, so there's no cost to [Virgin Voyages] and no obligation on Sailors. It's simply a better port day option — available through a QR code at disembarkation or in your pre-departure communications.",
 
-    "Given that you're standing up your Seattle program right now, I wanted to reach out early. Would you be open to a brief call this month to explore whether Wander fits within [Virgin Voyages]'s Seattle experience?",
+    "Given that you're standing up your Seattle program right now, I wanted to reach out early. Would you be open to a brief call this month to explore whether Pierway fits within [Virgin Voyages]'s Seattle experience?",
 ])
 
 add_signature(doc)
@@ -245,19 +245,19 @@ add_label(doc, "D", "Hotel — GM / Director of Sales",
           "Best for: Haley Connors (Marriott Waterfront) · Ian McClendon (Edgewater) · Leslie Womack (Mayflower)")
 
 add_field(doc, "To",      "[Haley Connors]  <[direct or hotel general line]>")
-add_field(doc, "Subject", "Wander — Complimentary Port Day Experience for [Marriott Waterfront] Cruise Guests | 2026 Season")
+add_field(doc, "Subject", "Pierway — Complimentary Port Day Experience for [Marriott Waterfront] Cruise Guests | 2026 Season")
 add_field(doc, "From",    "Ray Castro  <ray.s.castro@outlook.com>")
 
 add_body(doc, [
     "Hi Haley,",
 
-    "I'm Ray Castro, founder of Wander — an AI-powered walking experience platform launching in Seattle for the 2026 cruise season.",
+    "I'm Ray Castro, founder of Pierway — an AI-powered walking experience platform launching in Seattle for the 2026 cruise season.",
 
-    "Wander gives cruise passengers a personalized walking route for their Seattle port day — AI-generated, real-time, and built around their available time and interests. It's a genuinely useful tool for guests who want to explore the city independently rather than book a bus tour.",
+    "Pierway gives cruise passengers a personalized walking route for their Seattle port day — AI-generated, real-time, and built around their available time and interests. It's a genuinely useful tool for guests who want to explore the city independently rather than book a bus tour.",
 
-    "I'd love to explore a simple partnership: a Wander QR code at the [Marriott Waterfront] concierge desk, front desk, or in-room materials for cruise package guests. No cost to the hotel, no integration required — just a better resource for your guests the morning they head to the port.",
+    "I'd love to explore a simple partnership: a Pierway QR code at the [Marriott Waterfront] concierge desk, front desk, or in-room materials for cruise package guests. No cost to the hotel, no integration required — just a better resource for your guests the morning they head to the port.",
 
-    "Given [Marriott Waterfront]'s Park & Cruise package and your location steps from Pier 66, your guests are exactly who Wander is built for. Would you be open to a quick call or coffee to see if it's a fit?",
+    "Given [Marriott Waterfront]'s Park & Cruise package and your location steps from Pier 66, your guests are exactly who Pierway is built for. Would you be open to a quick call or coffee to see if it's a fit?",
 ])
 
 add_signature(doc)

@@ -1,45 +1,37 @@
-# Pierway — Passenger-Facing MVP Spec
-**Version 1.0 · March 2026 · Closes A-002**
+# Pierway — MVP Spec
+**Version 2.0 · March 2026 · Supersedes v1.0**
 
 ---
 
 ## What This Is
 
-The passenger-facing MVP is the web experience a cruise passenger lands on after scanning a Pierway QR code. It must work in a mobile browser, require no app download, no account, and deliver a useful walking route in under 60 seconds.
+The Pierway MVP is the complete working product — not a cruise-season demo, not a prototype. It covers the full lifecycle:
 
-**Success condition:** A passenger scans at Pier 91, answers two questions, and walks out of the terminal with a personalized route they actually follow.
+1. A passenger walks a personalized AI route with map and voice narration
+2. A merchant's QR code is scanned, creating a verified visit record
+3. Ray invoices the merchant and gets paid
 
-**Partner demo condition:** When a partner asks "can I see what a passenger experiences?" — we open this on our phone and show them.
+The MVP is pilot-ready. It can onboard a real merchant, record real visits, and generate a real invoice. The cruise season is one distribution channel — not the scope boundary.
 
----
-
-## What the MVP Does (and Does Not Do)
-
-### In scope for v1
-- Mobile web experience (responsive, browser-native, no install)
-- Time + interest input → AI-generated walking route
-- Route displayed as sequential stops with narrative content at each
-- Loop structure — returns passenger to pier before their deadline
-- "I'm here" check-in at each stop (geolocation, browser-native)
-- Works from Pier 66 and Pier 91 starting points
-
-### Explicitly out of scope for v1
-- Merchant recommendations (requires merchant sign-ups — Phase 2)
-- Payment processing / CPV billing (no merchants yet)
-- User accounts or profiles
-- Push notifications
-- Native app / app store
-- Multiple cities (Seattle only)
-- Real-time map with animated position
-- Backend database (no persistence required in v1)
+**Pilot target:** Any walkable tourist corridor in Seattle. Hotels and waterfront merchants are the first cohort. Cruise passengers are the first high-volume moment.
 
 ---
 
-## User Flow
+## The Three Systems
+
+| System | MVP Scope |
+|---|---|
+| Consumer App | Route gen, Mapbox map, voice narration, geolocation check-in, merchant QR scan |
+| Verified Visit Engine | QR validation, visit record, confidence scoring |
+| Back Office | Merchant onboarding, merchant dashboard, Ray's admin, Stripe billing |
+
+See [technical-architecture.md](./technical-architecture.md) for full design.
+
+---
+
+## Consumer App — User Flow
 
 ### Screen 1 — Landing
-**What the passenger sees when they scan the QR code.**
-
 ```
 ┌─────────────────────────────────┐
 │  [Pierway logo]                 │
@@ -55,17 +47,9 @@ The passenger-facing MVP is the web experience a cruise passenger lands on after
 └─────────────────────────────────┘
 ```
 
-**Key message:** Free. No download. Personal.
-
----
-
 ### Screen 2 — Preferences
-**Two questions. No more.**
-
 ```
 ┌─────────────────────────────────┐
-│  ← Back     Your Route          │
-│                                 │
 │  How much time do you have?     │
 │                                 │
 │  [2 hrs] [3 hrs] [4 hrs] [5+]  │
@@ -78,79 +62,47 @@ The passenger-facing MVP is the web experience a cruise passenger lands on after
 │  [🎨 Arts]  [☕ Coffee & Cafes] │
 │                                 │
 │  Starting from:                 │
-│  [Pier 91]  [Pier 66]           │
+│  [Pier 91] [Pier 66] [Downtown] │
 │                                 │
 │  [  Build My Route  ]           │
 └─────────────────────────────────┘
 ```
 
-**Design principle:** Fast, friendly, zero friction. No free-text input. Selections should feel like a preference, not a form.
-
----
+No free-text input. No account. No friction.
 
 ### Screen 3 — Generating
-**Show motion. This is the "magic moment."**
-
+3–5 second Claude API call. Animated feedback:
 ```
-┌─────────────────────────────────┐
-│                                 │
-│      [Pierway logo mark]        │
-│      [animated pulse]           │
-│                                 │
-│  Building your route...         │
-│                                 │
-│  ✓ Time: 3 hours                │
-│  ✓ Interests: History, Food     │
-│  ✓ Start: Pier 91               │
-│  ⟳ Generating route...          │
-│                                 │
-└─────────────────────────────────┘
+✓ Time: 3 hours
+✓ Interests: History, Food
+✓ Start: Pier 91
+⟳ Building your route...
 ```
 
-Target: 3–5 seconds. This is the Claude API call.
-
----
-
-### Screen 4 — Route Overview
-**The output. This screen has to earn trust immediately.**
-
+### Screen 4 — Route Map
+**Primary view: the Mapbox map.**
 ```
 ┌─────────────────────────────────┐
 │  Your Seattle Route             │
 │  3 hrs · 4 stops · ~1.8 miles  │
-│  Back at Pier 91 by 3:00 PM    │
 │                                 │
-│  ┌──────────────────────────┐  │
-│  │ STOP 1 · 0.3 mi          │  │
-│  │ Pike Place Market        │  │
-│  │ "Seattle's oldest public │  │
-│  │ market has been here     │  │
-│  │ since 1907..."           │  │
-│  │           [I'm Here →]   │  │
-│  └──────────────────────────┘  │
+│  [MAP — full width]             │
+│  numbered markers on route      │
+│  polyline connecting stops      │
+│  your position dot              │
 │                                 │
-│  ┌──────────────────────────┐  │
-│  │ STOP 2 · 0.4 mi          │  │
-│  │ Seattle Art Museum ...   │  │
-│  └──────────────────────────┘  │
-│                                 │
-│  ┌──────────────────────────┐  │
-│  │ STOP 3 · ...             │  │
-│  └──────────────────────────┘  │
-│                                 │
-│  ┌──────────────────────────┐  │
-│  │ RETURN · back to pier    │  │
-│  └──────────────────────────┘  │
+│  ┌─────────────────────────┐   │
+│  │ STOP 1 — Pike Place     │   │
+│  │ 0.3 mi · 45 min         │   │
+│  │ [tap to expand]     →   │   │
+│  └─────────────────────────┘   │
+│  [STOP 2] [STOP 3] [RETURN]    │
 └─────────────────────────────────┘
 ```
 
-Each stop card expands to show full narrative when tapped.
+Stops are swipeable cards below the map. Tapping a card opens Stop Detail and centers map on that stop.
 
----
-
-### Screen 5 — Stop Detail (expanded stop card)
-**The narrative experience. This is the product.**
-
+### Screen 5 — Stop Detail
 ```
 ┌─────────────────────────────────┐
 │  ← Route     Stop 1 of 4       │
@@ -159,131 +111,173 @@ Each stop card expands to show full narrative when tapped.
 │  ★ 0.3 miles from pier         │
 │  ⏱ Suggest 45 minutes here     │
 │                                 │
+│  [▶ Listen]                     │
+│                                 │
 │  Seattle's oldest public market │
 │  has operated continuously      │
-│  since 1907. What started as a  │
-│  farmers' market to cut out     │
-│  middlemen has become the       │
-│  beating heart of the city...   │
+│  since 1907...                  │
 │                                 │
-│  Look for the original farmer   │
-│  stalls on the lower level —    │
-│  most tourists never find them. │
+│  The original farmers' stalls   │
+│  are on the lower level — most  │
+│  visitors never find them.      │
 │                                 │
 │  [  I'm Here  ]  ← check-in   │
-│                                 │
 │  [ Next Stop → ]               │
 └─────────────────────────────────┘
 ```
 
-**The narrative is the differentiator.** Not directions. Not star ratings. A story that makes the passenger feel like they're getting insider knowledge.
+**[▶ Listen]** triggers Web Speech API narration of the narrative + insider tip.
 
----
-
-## What Happens When "I'm Here" Is Tapped
-
-v1 behavior:
-1. Browser requests geolocation permission
-2. If within ~150m of stop: confirms with a visual "✓ Checked in" and timestamps
-3. If not within range: shows message "Looks like you're not quite there yet — keep walking!"
-4. This data is logged for later (even if not yet monetized)
-
-This is the foundation of the verified-visit infrastructure. No merchant billing yet — just proving we can confirm physical presence at a location.
-
----
-
-## AI Prompt Design (the Claude call)
-
-The route is generated by a single structured call to Claude. Input:
-- Starting pier (Pier 91 / Pier 66)
-- Available time (2h / 3h / 4h / 5h+)
-- Interest tags (History, Food, Waterfront, Shopping, Arts, Coffee)
-
-Output format (JSON):
-```json
-{
-  "route_title": "A Waterfront Morning",
-  "total_time": "3 hours",
-  "total_distance": "1.8 miles",
-  "return_note": "Back at Pier 91 by 3:00 PM",
-  "stops": [
-    {
-      "order": 1,
-      "name": "Pike Place Market",
-      "distance_from_prev": "0.3 mi from pier",
-      "suggested_time": "45 minutes",
-      "narrative": "...",
-      "lat": 47.6085,
-      "lng": -122.3402
-    }
-  ]
-}
+### Screen 6 — Merchant Stop Detail
+Same as Screen 5, with an added merchant layer:
+```
+│  ──────────────────────────────  │
+│  🏷 Pierway Offer               │
+│  Show this screen for 10% off  │
+│                                 │
+│  [  Scan to Check In  ]        │
+│  (scans merchant QR code)      │
 ```
 
-**Prompt principles:**
-- Narrative voice: local, specific, story-first — not Wikipedia
-- Loop logic: routes must end near the starting pier
-- Time honesty: don't overpromise how much fits in 2 hours
-- Merchant layer hook: each stop should have a natural "while you're here" moment (ready for when merchants are enrolled)
+**[Scan to Check In]** opens the device camera to scan the merchant's QR code. This is the verified visit trigger.
+
+### Screen 7 — Visit Confirmed
+```
+┌─────────────────────────────────┐
+│                                 │
+│         ✓                       │
+│                                 │
+│  Checked in at                  │
+│  Café Bengodi                   │
+│  12:34 PM                       │
+│                                 │
+│  Enjoy your visit.              │
+│                                 │
+│  [ Continue Route → ]          │
+└─────────────────────────────────┘
+```
 
 ---
 
-## Technical Architecture (v1)
+## Voice Narration
 
-| Layer | Choice | Rationale |
+- Engine: Web Speech API (`window.speechSynthesis`) — browser native, zero cost
+- Triggered on: stop detail open (auto) OR play button tap (manual)
+- Content: stop name → narrative → insider tip
+- UI: play/pause button, visual waveform or simple progress bar
+- Fallback: if browser doesn't support speechSynthesis, hide the button gracefully
+- Upgrade path: ElevenLabs custom voice after revenue validation
+
+---
+
+## Merchant QR Scan — Verified Visit
+
+1. Passenger taps "Scan to Check In" on a merchant stop card
+2. Browser camera opens (via `<input type="file" accept="image/*" capture="environment">` or jsQR library)
+3. QR code decoded: `https://pierway.io/visit?m=MERCHANT_ID&t=TOKEN`
+4. Edge Function validates the HMAC token (prevents spoofing)
+5. If valid: creates visit record in `visits` table with `method = 'qr_scan'`
+6. Returns confirmation → Screen 7 displayed
+7. Merchant sees the visit appear in their dashboard within seconds
+
+---
+
+## Merchant Back Office
+
+### Onboarding (pierway.io/merchants)
+Self-serve, 5 minutes:
+1. Business name, type, address
+2. Accept CPV terms
+3. Stripe Connect (bank account for billing)
+4. Download QR code PDF
+
+### Merchant Dashboard (pierway.io/dashboard)
+- Visits this month (count + daily chart)
+- This month's bill (running total)
+- Download QR code
+
+### Ray's Admin (pierway.io/admin)
+- All merchants table (name, active, visits this month, revenue)
+- Visits log
+- Invoice history
+- Trigger billing run manually (before cron is set up)
+
+---
+
+## Billing
+
+- CPV rates: $3–6 per visit depending on merchant category
+- Merchant sets daily cap (default: 20 visits/day)
+- Monthly invoicing via Stripe
+- Stripe Checkout or hosted invoice page handles payment
+- Ray gets notified on payment
+
+---
+
+## Technical Decisions — Locked
+
+| Decision | Choice |
+|---|---|
+| Frontend | React + Vite |
+| Styling | Tailwind CSS |
+| Maps | Mapbox GL JS |
+| Voice | Web Speech API (browser native) |
+| AI | Claude API (`claude-sonnet-4-6`) |
+| Backend | Supabase (Postgres + Edge Functions) |
+| Payments | Stripe + Stripe Connect |
+| Hosting | Vercel |
+
+---
+
+## Phase 1.5 Features (After End-to-End Works)
+
+These are confirmed additions — deferred until the preset-based flow is validated end-to-end.
+
+| Feature | Description | Why Deferred |
 |---|---|---|
-| Frontend | Vanilla HTML/CSS/JS or React | No framework overhead needed for v1 |
-| AI | Claude API (claude-sonnet-4-6) | Route generation + narrative |
-| Backend | Single serverless function (Vercel/Netlify) | Just to hold the API key securely |
-| Geolocation | Browser native (`navigator.geolocation`) | No maps SDK needed |
-| Database | None in v1 | Log check-ins to a simple JSON endpoint or Airtable |
-| Hosting | Vercel or GitHub Pages + serverless | Free tier sufficient |
-| Domain | pierway.io | Once purchased |
-
-**No auth. No database. No native app.** The entire product is a mobile web page that calls Claude and displays structured output.
+| **Custom theme input** | Free-text or voice field on Preferences: "haunted buildings," "street art," "best views" — fed directly into the Claude prompt | Need to validate baseline Claude output quality on preset inputs first before opening to arbitrary free-form |
+| **Voice input (SpeechRecognition)** | Mic button on the custom theme field — Web Speech API, browser native, zero cost | Dependent on custom theme field; Safari support inconsistency needs testing |
+| **GPS starting point** | "Use My Location" option on Preferences — calls `navigator.geolocation`, passes actual lat/lng to Claude. Unlocks testing from anywhere in Seattle and non-pier distribution (hotels, waterfront merchants) | Deferred until preset flow is validated end-to-end |
 
 ---
 
-## The Minimum Bar for a Partner Demo
+## What Is Still Out of Scope
 
-A partner asks: "Can I see what a passenger would experience?"
-
-You pull out your phone, navigate to `pierway.io`, select:
-- 4 hours
-- History + Food
-- Pier 91
-
-And in 5 seconds you show them a route with 4 stops, real narrative about Seattle, and a clean UI that works on mobile.
-
-That's the demo. That's what we need before outreach calls convert.
+- Native app / app store
+- Multiple cities (Seattle only in MVP)
+- Real-time animated position tracking (battery drain)
+- Review or rating system
+- User accounts for passengers (anonymous by design)
+- Push notifications
+- Analytics beyond visit counts
 
 ---
 
 ## Build Sequence
 
-| Phase | What | Why |
+| Phase | Weeks | Gate |
 |---|---|---|
-| **Week 1** | UI shell — screens 1–3, no AI yet | Get the UX right before wiring AI |
-| **Week 2** | Claude API integration — route generation | Core product working end-to-end |
-| **Week 3** | Route display + stop detail screens | The experience passengers actually walk through |
-| **Week 4** | Geolocation check-in ("I'm Here") | Proves the verification model |
-| **Buffer** | Polish, mobile testing, edge cases | Before season demo meetings |
-
-**Hard deadline:** Working demo before first partner meeting converts to a product question.
+| Consumer App (no merchants) | 1–3 | Partner demo: scan → route → map → voice |
+| Verified Visit Engine | 4 | First QR scan records a visit in DB |
+| Back Office | 5–6 | First merchant invoiced via Stripe |
+| Pilot | 7 | First real merchant, first real walk, first real invoice |
 
 ---
 
-## Open Questions Before Build Starts
+## Accounts to Set Up Before Build Starts
 
-1. **Pier 91 vs Pier 66 routes:** Do we build separate route pools per pier, or does the AI handle this through the prompt? (Recommend: prompt-driven, with pier as a context variable)
+| Service | Why | Cost |
+|---|---|---|
+| Supabase | Database + backend | Free tier sufficient |
+| Mapbox | Map tiles + routing | Free tier (50K loads/mo) |
+| Stripe | Payment processing | No monthly fee, 2.9% + 30¢ per transaction |
+| Vercel | Frontend hosting | Free tier sufficient |
+| Anthropic API | Route generation | Pay-per-use (claude-sonnet-4-6) |
+| GitHub | Code repo | Free |
 
-2. **Offline behavior:** Passengers may lose signal mid-walk. Does the route need to work offline after initial load? (Recommend: yes — cache the generated route in localStorage)
-
-3. **Group dynamics:** Most cruise passengers travel in groups of 2–4. Does the UI need to account for this? (Recommend: ignore in v1 — the route works for any group size)
-
-4. **What if the route is wrong?** What happens if Claude generates a stop that doesn't exist or gives wrong directions? (Recommend: human review of the top 10 most common route combinations before launch)
+Total monthly cost before revenue: ~$0 (all free tiers).
 
 ---
 
-*Spec owner: Ray Castro · Closes action item A-002 from risk log*
-*Next step: Confirm build approach and start Week 1 UI shell*
+*Spec owner: Ray Castro · Replaces v1.0 (cruise-season scope)*
+*Architecture detail: see [technical-architecture.md](./technical-architecture.md)*
