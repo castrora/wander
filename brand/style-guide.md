@@ -140,14 +140,26 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 | Name | Hex | Use |
 |---|---|---|
 | **Navy** | `#1F3864` | Primary — headlines, logo, structural elements |
-| **Teal** | `#1A7A6E` | Accent — CTAs, links, highlights, the horizon dot in the logo |
-| **Teal Light** | `#2AA090` | Hover states, secondary teal applications |
+| **Teal** | `#2DD4BF` | Accent — CTAs, links, highlights, the horizon dot in the logo |
+| **Teal Light** | `#5EEAD4` | Hover states, secondary teal applications |
 | **Orange** | `#E07B39` | Alert, urgency, editorial callouts (use sparingly) |
 | **Off-White** | `#F7F9FB` | Section backgrounds, card fills |
 | **Mid-Grey** | `#6B7A8D` | Body text, secondary copy |
 | **Light Grey** | `#E8EDF3` | Borders, dividers |
 
 **Color usage principle:** Navy anchors trust and authority. Teal signals movement, water, and discovery. Orange is reserved for urgency and moments that require attention — not decoration.
+
+### Imagery
+
+**Watercolor Seattle skyline** (`seattle-bg.jpg`) — AI-generated watercolor cityscape featuring the Space Needle and Seattle skyline. Used as a background element across both the consumer app and B2B site.
+
+**Usage rules:**
+- Always use with a dark overlay or reduced opacity (15–20%) so text remains readable
+- Consumer app: `opacity-15` with a gradient fade to off-white on preference/generation screens
+- B2B site: `opacity: 0.2` behind the hero section with the navy gradient overlay
+- Flyer: used as full background with a `rgba(15, 26, 46, 0.55)` to `rgba(27, 42, 74, 0.85)` gradient overlay
+- Do not crop or recolor the image — use overlays to adjust mood
+- Source: AI-generated (StockCake) — no licensing restrictions
 
 ### Typography
 
