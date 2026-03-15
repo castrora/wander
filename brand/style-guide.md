@@ -1,4 +1,4 @@
-# Pierway — Brand Style Guide & Voice
+# Pierway: Brand Style Guide & Voice
 **Version 1.0 · March 2026**
 
 ---
@@ -11,7 +11,7 @@ An AI-powered walking experience that converts cruise passenger foot traffic int
 ### The One-Line Position
 > **Pierway turns port days into economic infrastructure.**
 
-### The Thesis (use this internally and with investors — not in cold outreach)
+### The Thesis (internal and investor use, not for cold outreach)
 Navigation owns directions. Review platforms own opinions. No one owns the closed-loop connection between pedestrian intent and in-store revenue. Pierway fills that gap.
 
 ### The Gap We Fill
@@ -29,7 +29,7 @@ Navigation owns directions. Review platforms own opinions. No one owns the close
 ### The Four Attributes
 
 **1. Specific**
-We cite numbers, name the piers, name the contacts, name the season. Vagueness reads as unpreparedness. Our audience — port managers, cruise line VPs, hotel GMs — respect people who've done the work.
+We cite numbers, name the piers, name the contacts, name the season. Vagueness reads as unpreparedness. Our audience (port managers, cruise line VPs, hotel GMs) respects people who've done the work.
 
 > ❌ "Thousands of cruise passengers visit Seattle every year."
 > ✅ "Seattle welcomed 298 ship calls and 2M+ cruise passengers in 2026."
@@ -84,16 +84,16 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 > Pierway is an AI-powered walking platform built for cruise passengers during their Seattle port day. Passengers scan a QR code at the terminal or hotel, get a personalized walking route, and explore the city on their own terms. Merchants are embedded as contextual recommendations. When a passenger walks through their door, the merchant pays a small verified-visit fee. No impressions. No clicks. Just real foot traffic.
 
 ### B2B Partner Pitch (email / one-pager lede)
-> Pierway adds a free, immediately useful experience for your passengers the moment they step off the ship — a personalized AI walking route for their port day. No cost to you. No integration required. We make money when passengers walk through merchant doors, confirmed by high-fidelity telemetry.
+> Pierway adds a free, immediately useful experience for your passengers the moment they step off the ship. A personalized AI walking route for their port day. No cost to you. No integration required. We make money when passengers walk through merchant doors, confirmed by high-fidelity telemetry.
 
-### For Merchants (not yet in market — reference only)
+### For Merchants (not yet in market, reference only)
 > You pay Pierway only when a passenger physically enters your location. Not when they see your name. Not when they click. When they walk in. We call it a verified visit. The fee is $3–8. You set a daily cap.
 
-### Taglines (use contextually — not all at once)
-- **"Walk Seattle. Discover more."** — consumer-facing, aspirational
-- **"From ship to street in 30 seconds."** — product-focused, operational
-- **"Pay for visits. Not impressions."** — merchant/revenue model
-- **"Nobody owns the gap between the ship and the city."** — positioning, thought leadership
+### Taglines (use contextually, not all at once)
+- **"Walk Seattle. Discover more."** Consumer-facing, aspirational.
+- **"From ship to street in 30 seconds."** Product-focused, operational.
+- **"Pay for visits. Not impressions."** Merchant/revenue model.
+- **"Nobody owns the gap between the ship and the city."** Positioning, thought leadership.
 
 ---
 
@@ -101,18 +101,18 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 
 ### Always
 - Capitalize **Pierway** (never `pierway`, `PIERWAY`, or `Pier Way`)
-- Use **port day** (two words, no hyphen) — not "shore day," "port stop," or "layover"
-- Use **CPV** after first mention of "Cost Per Verified Visit" — spell it out first
-- Use **disembarkation** or **disembarking** — not "getting off the ship"
-- Refer to the product as **Pierway** — not "the app," "the platform," or "the tool" in external comms
-- Use **verified visit** when describing our attribution model — not "check-in" or "geofencing"
+- Use **port day** (two words, no hyphen), not "shore day," "port stop," or "layover"
+- Use **CPV** after first mention of "Cost Per Verified Visit." Spell it out first.
+- Use **disembarkation** or **disembarking**, not "getting off the ship"
+- Refer to the product as **Pierway**, not "the app," "the platform," or "the tool" in external comms
+- Use **verified visit** when describing our attribution model, not "check-in" or "geofencing"
 
 ### Never
 - "Seamless," "innovative," "cutting-edge," "disruptive," "revolutionary"
 - "Leverage" as a verb
 - "Synergy" or "ecosystem" in external comms
 - "Going forward" or "at the end of the day"
-- Em dashes (—) — use periods, commas, or colons instead. Break long sentences into shorter ones.
+- Em dashes. Use periods, commas, or colons instead. Break long sentences into shorter ones.
 - Passive voice where active is possible
 - Exclamation points in B2B outreach (one exception: congratulating someone on a specific achievement)
 
@@ -123,8 +123,8 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 - No clickbait. No "Quick question" or "Following up"
 
 **Good examples:**
-- `Pierway — AI Walking Experience for Seattle Cruise Passengers | QR Placement Inquiry`
-- `Pierway + [Cruise Line] — Port Day Experience for 2026 Season`
+- `Pierway: AI Walking Experience for Seattle Cruise Passengers | QR Placement Inquiry`
+- `Pierway + [Cruise Line]: Port Day Experience for 2026 Season`
 - `Complimentary Port Day Resource for [Hotel Name] Cruise Guests`
 
 **Avoid:**
@@ -140,27 +140,27 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 
 | Name | Hex | Use |
 |---|---|---|
-| **Navy** | `#1F3864` | Primary — headlines, logo, structural elements |
-| **Teal** | `#2DD4BF` | Accent — CTAs, links, highlights, the horizon dot in the logo |
+| **Navy** | `#1F3864` | Primary: headlines, logo, structural elements |
+| **Teal** | `#2DD4BF` | Accent: CTAs, links, highlights, the horizon dot in the logo |
 | **Teal Light** | `#5EEAD4` | Hover states, secondary teal applications |
 | **Orange** | `#E07B39` | Alert, urgency, editorial callouts (use sparingly) |
 | **Off-White** | `#F7F9FB` | Section backgrounds, card fills |
 | **Mid-Grey** | `#6B7A8D` | Body text, secondary copy |
 | **Light Grey** | `#E8EDF3` | Borders, dividers |
 
-**Color usage principle:** Navy anchors trust and authority. Teal signals movement, water, and discovery. Orange is reserved for urgency and moments that require attention — not decoration.
+**Color usage principle:** Navy anchors trust and authority. Teal signals movement, water, and discovery. Orange is reserved for urgency and moments that require attention, not decoration.
 
 ### Imagery
 
-**Watercolor Seattle skyline** (`seattle-bg.jpg`) — AI-generated watercolor cityscape featuring the Space Needle and Seattle skyline. Used as a background element across both the consumer app and B2B site.
+**Watercolor Seattle skyline** (`seattle-bg.jpg`). AI-generated watercolor cityscape featuring the Space Needle and Seattle skyline. Used as a background element across both the consumer app and B2B site.
 
 **Usage rules:**
 - Always use with a dark overlay or reduced opacity (15–20%) so text remains readable
 - Consumer app: `opacity-15` with a gradient fade to off-white on preference/generation screens
 - B2B site: `opacity: 0.2` behind the hero section with the navy gradient overlay
 - Flyer: used as full background with a `rgba(15, 26, 46, 0.55)` to `rgba(27, 42, 74, 0.85)` gradient overlay
-- Do not crop or recolor the image — use overlays to adjust mood
-- Source: AI-generated (StockCake) — no licensing restrictions
+- Do not crop or recolor the image. Use overlays to adjust mood.
+- Source: AI-generated (StockCake). No licensing restrictions.
 
 ### Typography
 
@@ -169,7 +169,7 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 | Display / Headlines | Playfair Display | 700 |
 | Body / UI | Inter | 300–700 |
 | Fallback (serif) | Georgia | 700 |
-| Fallback (sans) | System UI | — |
+| Fallback (sans) | System UI | n/a |
 
 **Sizing scale (web):**
 - H1: `clamp(2.6rem, 6vw, 4.2rem)`
@@ -222,13 +222,13 @@ These distinctions matter when talking to partners and press.
 
 ## 9. Founding Voice (Ray Castro)
 
-Pierway's external voice in the launch phase is Ray's voice — a founder who knows the port, has done the research, and is building something specific. The cold outreach emails reflect this: named contacts, specific ships, specific piers, specific seasons.
+Pierway's external voice in the launch phase is Ray's voice. A founder who knows the port, has done the research, and is building something specific. The cold outreach emails reflect this: named contacts, specific ships, specific piers, specific seasons.
 
 **Principles for Ray's written voice:**
-- First person is appropriate in outreach — "I'm building Pierway" not "Pierway is being built"
+- First person is appropriate in outreach. "I'm building Pierway" not "Pierway is being built."
 - Reference specific, researched details about the recipient's world (the ship name, the property, the program)
 - Keep emails under 200 words. Busy people don't read longer.
-- One ask per email. Not "can we partner" and "can you share this" and "do you have 20 minutes"
+- One ask per email. Not "can we partner" and "can you share this" and "do you have 20 minutes."
 - Warm but not overly casual. Professional but not corporate.
 
 ---
