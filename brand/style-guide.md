@@ -112,6 +112,7 @@ Lead with: merchant activation, data on visitor movement, alignment with their d
 - "Leverage" as a verb
 - "Synergy" or "ecosystem" in external comms
 - "Going forward" or "at the end of the day"
+- Em dashes (—) — use periods, commas, or colons instead. Break long sentences into shorter ones.
 - Passive voice where active is possible
 - Exclamation points in B2B outreach (one exception: congratulating someone on a specific achievement)
 
