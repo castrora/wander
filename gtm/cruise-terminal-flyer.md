@@ -1,9 +1,9 @@
-# Pierway — Cruise Terminal Flyer
+# Pierway: Cruise Terminal Flyer
 
 ## Design Spec
 
-**Size:** 5.5" x 8.5" (half-letter) — easy to hand out, fits in a back pocket
-**Paper:** 100lb gloss cardstock — holds up in rain, feels premium
+**Size:** 5.5" x 8.5" (half-letter). Easy to hand out, fits in a back pocket
+**Paper:** 100lb gloss cardstock. Holds up in rain, feels premium
 **Print:** Two-sided, full color
 
 ---
@@ -74,7 +74,7 @@ Just scan and walk.
 │     3. Get a personalized walking route     │
 │        with hidden gems and local stories   │
 │                                             │
-│     4. Walk at your own pace — your phone   │
+│     4. Walk at your own pace. Your phone     │
 │        buzzes when something cool is nearby │
 │                                             │
 │                                             │
@@ -84,7 +84,7 @@ Just scan and walk.
 │      show two blocks from where you're      │
 │      standing right now."                   │
 │                                             │
-│     — The kind of thing Pierway tells you   │
+│     ~ The kind of thing Pierway tells you   │
 │                                             │
 │     ─────────────────────────────           │
 │                                             │
@@ -103,11 +103,11 @@ Just scan and walk.
 1. Scan the QR code
 2. Pick your time and interests (history, food, art, waterfront...)
 3. Get a personalized walking route with hidden gems and local stories
-4. Walk at your own pace — your phone buzzes when something cool is nearby
+4. Walk at your own pace. Your phone buzzes when something cool is nearby
 
 **Pull quote (italic, larger font):**
 "Nirvana played their first Seattle show two blocks from where you're standing right now."
-— The kind of thing Pierway tells you
+~ The kind of thing Pierway tells you
 
 **Footer:**
 Works on any phone. No download needed.
@@ -117,7 +117,7 @@ pierway.vercel.app
 
 ## QR Code Tracking
 
-Two versions of the flyer — identical design, different QR codes:
+Two versions of the flyer, identical design, different QR codes:
 
 **Pier 91 (Smith Cove) version:**
 `https://pierway.vercel.app/?utm_source=cruise_flyer&utm_terminal=pier91`
@@ -135,8 +135,8 @@ PostHog will capture the UTM parameters automatically so you can see:
 ## Distribution Plan
 
 **Where:**
-- Pier 91 (Smith Cove) — Carnival, Royal Caribbean, Princess, Holland America, Celebrity
-- Pier 66 (Bell Street) — Norwegian, Oceania
+- Pier 91 (Smith Cove): Carnival, Royal Caribbean, Princess, Holland America, Celebrity
+- Pier 66 (Bell Street): Norwegian, Oceania
 
 **When:**
 - Disembarkation window: 8:30 AM – 10:00 AM (passengers leaving ship)
@@ -144,7 +144,7 @@ PostHog will capture the UTM parameters automatically so you can see:
 
 **Season:** Mid-April through mid-October 2026 (~330 ship calls, ~2M passengers)
 
-**Permit note:** Cruise terminals are Port of Seattle property. Stand on the public sidewalk adjacent to the terminal — protected First Amendment activity, no permit needed. Contact Port of Seattle (206-787-3000) if you want to explore on-property access.
+**Permit note:** Cruise terminals are Port of Seattle property. Stand on the public sidewalk adjacent to the terminal. This is protected First Amendment activity, no permit needed. Contact Port of Seattle (206-787-3000) if you want to explore on-property access.
 
 **Volume:** Start with 500 flyers for the first 2-3 ships. Measure scan rate before scaling up.
 

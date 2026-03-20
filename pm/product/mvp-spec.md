@@ -1,17 +1,17 @@
-# Pierway — MVP Spec
+# Pierway: MVP Spec
 **Version 2.0 · March 2026 · Supersedes v1.0**
 
 ---
 
 ## What This Is
 
-The Pierway MVP is the complete working product — not a cruise-season demo, not a prototype. It covers the full lifecycle:
+The Pierway MVP is the complete working product, not a cruise-season demo, not a prototype. It covers the full lifecycle:
 
 1. A passenger walks a personalized AI route with map and voice narration
 2. A merchant's QR code is scanned, creating a verified visit record
 3. Ray invoices the merchant and gets paid
 
-The MVP is pilot-ready. It can onboard a real merchant, record real visits, and generate a real invoice. The cruise season is one distribution channel — not the scope boundary.
+The MVP is pilot-ready. It can onboard a real merchant, record real visits, and generate a real invoice. The cruise season is one distribution channel, not the scope boundary.
 
 **Pilot target:** Any walkable tourist corridor in Seattle. Hotels and waterfront merchants are the first cohort. Cruise passengers are the first high-volume moment.
 
@@ -29,9 +29,9 @@ See [technical-architecture.md](./technical-architecture.md) for full design.
 
 ---
 
-## Consumer App — User Flow
+## Consumer App: User Flow
 
-### Screen 1 — Landing
+### Screen 1: Landing
 ```
 ┌─────────────────────────────────┐
 │  [Pierway logo]                 │
@@ -47,7 +47,7 @@ See [technical-architecture.md](./technical-architecture.md) for full design.
 └─────────────────────────────────┘
 ```
 
-### Screen 2 — Preferences
+### Screen 2: Preferences
 ```
 ┌─────────────────────────────────┐
 │  How much time do you have?     │
@@ -70,7 +70,7 @@ See [technical-architecture.md](./technical-architecture.md) for full design.
 
 No free-text input. No account. No friction.
 
-### Screen 3 — Generating
+### Screen 3: Generating
 3–5 second Claude API call. Animated feedback:
 ```
 ✓ Time: 3 hours
@@ -79,20 +79,20 @@ No free-text input. No account. No friction.
 ⟳ Building your route...
 ```
 
-### Screen 4 — Route Map
+### Screen 4: Route Map
 **Primary view: the Mapbox map.**
 ```
 ┌─────────────────────────────────┐
 │  Your Seattle Route             │
 │  3 hrs · 4 stops · ~1.8 miles  │
 │                                 │
-│  [MAP — full width]             │
+│  [MAP, full width]              │
 │  numbered markers on route      │
 │  polyline connecting stops      │
 │  your position dot              │
 │                                 │
 │  ┌─────────────────────────┐   │
-│  │ STOP 1 — Pike Place     │   │
+│  │ STOP 1: Pike Place      │   │
 │  │ 0.3 mi · 45 min         │   │
 │  │ [tap to expand]     →   │   │
 │  └─────────────────────────┘   │
@@ -102,7 +102,7 @@ No free-text input. No account. No friction.
 
 Stops are swipeable cards below the map. Tapping a card opens Stop Detail and centers map on that stop.
 
-### Screen 5 — Stop Detail
+### Screen 5: Stop Detail
 ```
 ┌─────────────────────────────────┐
 │  ← Route     Stop 1 of 4       │
@@ -118,7 +118,7 @@ Stops are swipeable cards below the map. Tapping a card opens Stop Detail and ce
 │  since 1907...                  │
 │                                 │
 │  The original farmers' stalls   │
-│  are on the lower level — most  │
+│  are on the lower level. Most   │
 │  visitors never find them.      │
 │                                 │
 │  [  I'm Here  ]  ← check-in   │
@@ -128,7 +128,7 @@ Stops are swipeable cards below the map. Tapping a card opens Stop Detail and ce
 
 **[▶ Listen]** triggers Web Speech API narration of the narrative + insider tip.
 
-### Screen 6 — Merchant Stop Detail
+### Screen 6: Merchant Stop Detail
 Same as Screen 5, with an added merchant layer:
 ```
 │  ──────────────────────────────  │
@@ -141,7 +141,7 @@ Same as Screen 5, with an added merchant layer:
 
 **[Scan to Check In]** opens the device camera to scan the merchant's QR code. This is the verified visit trigger.
 
-### Screen 7 — Visit Confirmed
+### Screen 7: Visit Confirmed
 ```
 ┌─────────────────────────────────┐
 │                                 │
@@ -161,7 +161,7 @@ Same as Screen 5, with an added merchant layer:
 
 ## Voice Narration
 
-- Engine: Web Speech API (`window.speechSynthesis`) — browser native, zero cost
+- Engine: Web Speech API (`window.speechSynthesis`), browser native, zero cost
 - Triggered on: stop detail open (auto) OR play button tap (manual)
 - Content: stop name → narrative → insider tip
 - UI: play/pause button, visual waveform or simple progress bar
@@ -170,7 +170,7 @@ Same as Screen 5, with an added merchant layer:
 
 ---
 
-## Merchant QR Scan — Verified Visit
+## Merchant QR Scan: Verified Visit
 
 1. Passenger taps "Scan to Check In" on a merchant stop card
 2. Browser camera opens (via `<input type="file" accept="image/*" capture="environment">` or jsQR library)
@@ -214,7 +214,7 @@ Self-serve, 5 minutes:
 
 ---
 
-## Technical Decisions — Locked
+## Technical Decisions: Locked
 
 | Decision | Choice |
 |---|---|
@@ -231,13 +231,13 @@ Self-serve, 5 minutes:
 
 ## Phase 1.5 Features (After End-to-End Works)
 
-These are confirmed additions — deferred until the preset-based flow is validated end-to-end.
+These are confirmed additions, deferred until the preset-based flow is validated end-to-end.
 
 | Feature | Description | Why Deferred |
 |---|---|---|
-| **Custom theme input** | Free-text or voice field on Preferences: "haunted buildings," "street art," "best views" — fed directly into the Claude prompt | Need to validate baseline Claude output quality on preset inputs first before opening to arbitrary free-form |
-| **Voice input (SpeechRecognition)** | Mic button on the custom theme field — Web Speech API, browser native, zero cost | Dependent on custom theme field; Safari support inconsistency needs testing |
-| **GPS starting point** | "Use My Location" option on Preferences — calls `navigator.geolocation`, passes actual lat/lng to Claude. Unlocks testing from anywhere in Seattle and non-pier distribution (hotels, waterfront merchants) | Deferred until preset flow is validated end-to-end |
+| **Custom theme input** | Free-text or voice field on Preferences: "haunted buildings," "street art," "best views," fed directly into the Claude prompt | Need to validate baseline Claude output quality on preset inputs first before opening to arbitrary free-form |
+| **Voice input (SpeechRecognition)** | Mic button on the custom theme field. Web Speech API, browser native, zero cost | Dependent on custom theme field; Safari support inconsistency needs testing |
+| **GPS starting point** | "Use My Location" option on Preferences. Calls `navigator.geolocation`, passes actual lat/lng to Claude. Unlocks testing from anywhere in Seattle and non-pier distribution (hotels, waterfront merchants) | Deferred until preset flow is validated end-to-end |
 
 ---
 

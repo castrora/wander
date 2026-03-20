@@ -1,4 +1,4 @@
-# Pierway — Technical Architecture
+# Pierway: Technical Architecture
 **Version 1.0 · March 2026**
 
 ---
@@ -13,7 +13,7 @@ Pierway is three systems that work together:
 | **Verified Visit Engine** | Merchant QR scan → timestamped visit record → billable event | Passengers at merchant location |
 | **Back Office** | Merchant onboarding, visit log, invoicing, Stripe billing, Ray's dashboard | Ray + enrolled merchants |
 
-These systems share a single backend and database. They are not three separate products — they are three surfaces of one product.
+These systems share a single backend and database. They are not three separate products. They are three surfaces of one product.
 
 ---
 
@@ -42,7 +42,7 @@ Built for a solo founder building with AI assistance. Priorities: fast to ship, 
 |---|---|
 | Next.js | Server-side rendering not needed for this product in v1 |
 | Firebase | Vendor lock-in, pricing surprises at scale |
-| Custom backend (Node/Express) | Supabase replaces it — less to manage |
+| Custom backend (Node/Express) | Supabase replaces it, less to manage |
 | Google Maps | Mapbox is better for custom route rendering and offline |
 | ElevenLabs (v1) | $0.30/min adds up fast before revenue. Browser TTS is good enough to validate the concept |
 | React Native / Expo | Web-first is correct for scan-from-QR-code use case. No install friction. |
@@ -71,9 +71,9 @@ Preferences (time / interests / starting point)
      ↓
 Generating... (Claude API call, 3–5 sec)
      ↓
-Route Map — all stops visible, Mapbox
+Route Map, all stops visible, Mapbox
      ↓
-Stop Detail — narrative + voice + "I'm Here" + merchant QR
+Stop Detail: narrative + voice + "I'm Here" + merchant QR
      ↓
 Verified Visit Confirmation (if at merchant stop)
      ↓
@@ -89,7 +89,7 @@ One structured API call per route request. Inputs:
 - `current_date`: for seasonal context
 - `city`: "Seattle" (expandable)
 
-Output — strict JSON:
+Output (strict JSON):
 ```json
 {
   "route_id": "uuid",
@@ -106,7 +106,7 @@ Output — strict JSON:
       "walk_time_from_prev": "6 min",
       "suggested_time": "45 minutes",
       "narrative": "...",
-      "insider_tip": "The original farmers' stalls are on the lower level — most visitors never find them.",
+      "insider_tip": "The original farmers' stalls are on the lower level. Most visitors never find them.",
       "merchant_hook": null,
       "lat": 47.6085,
       "lng": -122.3402,
@@ -120,7 +120,7 @@ Output — strict JSON:
       "walk_time_from_prev": "4 min",
       "suggested_time": "20 minutes",
       "narrative": "...",
-      "insider_tip": "Ask for the cortado — it's not on the menu.",
+      "insider_tip": "Ask for the cortado. It's not on the menu.",
       "merchant_hook": "Show your Pierway route for 10% off",
       "lat": 47.6099,
       "lng": -122.3415,
@@ -131,8 +131,8 @@ Output — strict JSON:
 ```
 
 **Stop types:**
-- `landmark` — public attraction, no merchant billing
-- `merchant` — enrolled merchant, CPV billable on verified visit
+- `landmark`: public attraction, no merchant billing
+- `merchant`: enrolled merchant, CPV billable on verified visit
 
 ### Map Implementation
 
@@ -140,12 +140,12 @@ Output — strict JSON:
 - Polyline drawn between stops in sequence
 - Custom markers: numbered circles (navy fill, teal border)
 - Active stop marker enlarges when passenger is at/near location
-- Route is cached in `localStorage` after generation — works offline after first load
+- Route is cached in `localStorage` after generation, works offline after first load
 - Geolocation updates position dot continuously (battery-friendly interval: every 15 sec)
 
 ### Voice Narration
 
-- Web Speech API (`speechSynthesis`) — zero cost, browser native
+- Web Speech API (`speechSynthesis`), zero cost, browser native
 - Triggered automatically when stop detail opens, or manually via play button
 - Reads: stop name + narrative + insider tip
 - UI: play/pause button, progress bar
@@ -164,7 +164,7 @@ Taps "I'm Here" on stop card
      ↓
 Two-track verification:
   Track A: Geolocation check (~150m radius)
-  Track B: Scan merchant QR code (optional — stronger signal)
+  Track B: Scan merchant QR code (optional, stronger signal)
      ↓
 Backend records: merchant_id, route_id, passenger_session_id,
                  timestamp, lat/lng, verification_method
@@ -218,7 +218,7 @@ ELSE IF method = 'geolocation' AND accuracy_m < 200
 
 ELSE IF method = 'geolocation' AND accuracy_m >= 200
   → Low confidence. Record as attempted. Do not bill.
-  → Show passenger: "Looks like you're not quite there yet — keep walking!"
+  → Show passenger: "Looks like you're not quite there yet. Keep walking!"
 ```
 
 ---
@@ -378,25 +378,25 @@ pierway/
 
 ## Build Sequence
 
-### Phase 1 — Consumer App (Weeks 1–3)
+### Phase 1: Consumer App (Weeks 1–3)
 Goal: passenger can scan, get a route, see it on a map, hear narration
 
 | Week | Deliverable |
 |---|---|
 | 1 | React app scaffolded (Vite), Tailwind configured, Landing + Preferences screens, brand tokens |
-| 2 | Claude API integration via Supabase Edge Function — route generation works end-to-end |
+| 2 | Claude API integration via Supabase Edge Function. Route generation works end-to-end |
 | 3 | Mapbox map with waymarkers, Stop Detail with voice narration, geolocation check-in |
 
 **Partner demo possible after Week 3.**
 
-### Phase 2 — Verified Visit Engine (Week 4)
+### Phase 2: Verified Visit Engine (Week 4)
 Goal: merchant QR scan creates a verified visit record in the database
 
 | Week | Deliverable |
 |---|---|
 | 4 | Supabase DB setup, Edge Function for visit recording, QR code generation for test merchant, visit confirmation UI |
 
-### Phase 3 — Back Office (Weeks 5–6)
+### Phase 3: Back Office (Weeks 5–6)
 Goal: Ray can see visits, generate invoices, get paid
 
 | Week | Deliverable |
@@ -404,7 +404,7 @@ Goal: Ray can see visits, generate invoices, get paid
 | 5 | Merchant onboarding flow, simple merchant dashboard, Stripe Connect setup |
 | 6 | Ray's admin dashboard, billing Edge Function, invoice generation + Stripe invoices |
 
-### Phase 4 — Pilot Prep (Week 7)
+### Phase 4: Pilot Prep (Week 7)
 Goal: first real merchant enrolled, first real walk tested
 
 | Week | Deliverable |
@@ -415,7 +415,7 @@ Goal: first real merchant enrolled, first real walk tested
 
 ## Open Questions (Decision Required)
 
-1. **Offline support:** After route generation, cache stop data and map tiles in `localStorage` + Service Worker? Recommended yes — passengers lose signal mid-walk.
+1. **Offline support:** After route generation, cache stop data and map tiles in `localStorage` + Service Worker? Recommended yes, as passengers lose signal mid-walk.
 
 2. **Mapbox tier:** Free tier = 50,000 map loads/month. More than enough for MVP. Switch to paid at scale. No decision needed now.
 

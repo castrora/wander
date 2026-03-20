@@ -23,7 +23,7 @@ The long-term asset is not tour content. It is a growing dataset of pedestrian d
 
 ## 2. The Core Thesis
 
-Cities generate enormous pedestrian intent. Tourists land in places like Rome, Paris, London, New York City, San Francisco, Tokyo — millions walk structured routes with high purchase intent.
+Cities generate enormous pedestrian intent. Tourists land in places like Rome, Paris, London, New York City, San Francisco, Tokyo, and millions walk structured routes with high purchase intent.
 
 - Navigation platforms own **directions**
 - Review platforms own **opinions**
@@ -45,7 +45,7 @@ Wander is not a tour app or an advertising network. It is a real-time urban expl
 - Embedded commerce suggestions integrated natively into storytelling
 - Verified Visit Tracker using high-fidelity telemetry
 
-**Example:** A user near the Freedom Trail in Boston wants two hours of architecture and revolutionary war history. The system instantly generates a 2.6-mile loop that adapts narration and routing as they walk. Unlike traditional apps, Wander uses narrative-native commerce to introduce merchants contextually — suggesting a local bakery for its famous almond biscotti and a complimentary sample when the walker is nearby.
+**Example:** A user near the Freedom Trail in Boston wants two hours of architecture and revolutionary war history. The system instantly generates a 2.6-mile loop that adapts narration and routing as they walk. Unlike traditional apps, Wander uses narrative-native commerce to introduce merchants contextually, suggesting a local bakery for its famous almond biscotti and a complimentary sample when the walker is nearby.
 
 Subtle. Contextual. Optional. Commerce is additive, not interruptive.
 
@@ -109,15 +109,15 @@ Gross margins are software-driven and scale with route density.
 
 ## 8. Defensibility Timeline
 
-**Phase 1 — Execution Moat:** AI-native architecture, rapid city deployment
+**Phase 1, Execution Moat:** AI-native architecture, rapid city deployment
 
-**Phase 2 — Data Moat:**
+**Phase 2, Data Moat:**
 - Conversion probability heatmaps
 - Time-of-day demand modeling
 - Merchant ROI history
 - Behavioral segmentation
 
-**Phase 3 — Platform Moat:**
+**Phase 3, Platform Moat:**
 - API integrations
 - Embedded distribution via hotels & travel platforms
 - City-level enterprise contracts
@@ -182,7 +182,7 @@ Wander begins as an AI-native solo operation testing a radical hypothesis: **Can
 
 One person oversees strategy. AI executes. As ARR scales beyond $5M, headcount increases selectively (3–7 operators).
 
-### Pierway Pilot — Technical Architecture (Built)
+### Pierway Pilot: Technical Architecture (Built)
 
 The following architecture was built by one founder + AI in 3 days (March 12–14, 2026). Pierway is the Seattle consumer pilot of the Wander platform. Live at **walkpierway.com**.
 
@@ -258,12 +258,12 @@ The following architecture was built by one founder + AI in 3 days (March 12–1
 ```
 
 **Key architectural decisions:**
-- **No backend server** — Vercel serverless functions + Supabase replace a traditional backend
-- **API key isolation** — Anthropic key lives server-side only; Mapbox token domain-locked to walkpierway.com
-- **Client-side GPS** — Haversine distance checks for check-ins (50m), route-stop alerts (150m), POI alerts (100m), off-route detection (0.25mi)
-- **Zero infrastructure ops** — fully managed: Vercel (hosting + functions), Supabase (database), PostHog (analytics), Cloudflare (DNS)
-- **GTM built in** — QR flyers with UTM tracking feed directly into PostHog conversion funnels
-- **Total build time: 3 days, 1 founder, 0 employees** — validates the 1-Person Enterprise thesis
+- **No backend server.** Vercel serverless functions + Supabase replace a traditional backend
+- **API key isolation.** Anthropic key lives server-side only; Mapbox token domain-locked to walkpierway.com
+- **Client-side GPS.** Haversine distance checks for check-ins (50m), route-stop alerts (150m), POI alerts (100m), off-route detection (0.25mi)
+- **Zero infrastructure ops.** Fully managed: Vercel (hosting + functions), Supabase (database), PostHog (analytics), Cloudflare (DNS)
+- **GTM built in.** QR flyers with UTM tracking feed directly into PostHog conversion funnels
+- **Total build time: 3 days, 1 founder, 0 employees.** Validates the 1-Person Enterprise thesis
 
 ---
 
@@ -352,8 +352,8 @@ Media is not vanity. It is distribution infrastructure.
 
 ## Design Principles
 
-1. **User Initiative & Agentic Sovereignty** — intent-driven, deviation-respecting, narrative-native consent
-2. **Accuracy & Hallucination Prevention** — RAG-grounded narration, verified attribution logic, live walkability validation
-3. **Audit-Level Reporting** — unit economics transparency, merchant ROI attribution, automated compliance
-4. **Privacy by Design** — anonymized movement intelligence, ethical data licensing
-5. **Resilient Automation** — strategic escalation triggers, fail-safe narration defaults
+1. **User Initiative & Agentic Sovereignty.** Intent-driven, deviation-respecting, narrative-native consent
+2. **Accuracy & Hallucination Prevention.** RAG-grounded narration, verified attribution logic, live walkability validation
+3. **Audit-Level Reporting.** Unit economics transparency, merchant ROI attribution, automated compliance
+4. **Privacy by Design.** Anonymized movement intelligence, ethical data licensing
+5. **Resilient Automation.** Strategic escalation triggers, fail-safe narration defaults
